@@ -1,0 +1,169 @@
+/* ===== REICH HQ TEMPLATE ===== */
+.hq-reich-page {
+    background-color: #fbfbf9; 
+    background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 100% 4px;
+    color: #111;
+    font-family: 'Old Standard TT', serif;
+    padding: 25mm 20mm;
+    position: relative;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.06);
+}
+
+.hq-reich-page * {
+    text-shadow: 0.2px 0.2px 1px rgba(0,0,0,0.2);
+}
+
+.hr-border-outer {
+    border: 2px solid #000;
+    padding: 2px;
+    height: 100%;
+    position: relative;
+}
+
+.hr-border-outer::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid #000;
+    pointer-events: none;
+}
+
+.hr-head-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 25px;
+}
+
+.hr-abs {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Courier Prime', monospace;
+}
+
+.hr-right {
+    text-align: right;
+    font-family: 'Courier Prime', monospace;
+    font-size: 15px;
+}
+
+.hr-ausf {
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.hr-title {
+    text-align: center;
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 38px;
+    margin: 40px 0 20px;
+    letter-spacing: 2px;
+}
+
+.hr-geheim {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #000;
+    text-transform: uppercase;
+    border-top: 3px double #000;
+    border-bottom: 3px double #000;
+    padding: 10px 0;
+    margin: 0 40px 40px;
+}
+
+.hr-betrifft-box {
+    margin: 0 35px 30px;
+    display: flex;
+}
+
+.hr-betrifft-label {
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 22px;
+    margin-right: 15px;
+}
+
+.hr-betrifft-text {
+    font-family: 'Courier Prime', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    flex: 1;
+}
+
+.hr-body {
+    margin: 0 35px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 80mm;
+    white-space: pre-wrap;
+}
+
+.hr-body p {
+    margin-bottom: 15px;
+    text-indent: 40px;
+}
+
+.hr-footer {
+    margin: 40px 40px 0;
+    text-align: right;
+    position: relative;
+}
+
+.hr-sig-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.hr-sig-name {
+    position: relative;
+    display: inline-block;
+    padding-right: 40px;
+    min-height: 60px;
+}
+
+.hr-cursive-sig {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 40px;
+    color: #1a4f9c; /* Blue ink */
+}
+
+.hr-stamp-okw {
+    position: absolute;
+    left: -120px;
+    top: -20px;
+    width: 100px;
+    height: 100px;
+    border: 3px double #1a4f9c; /* Blue stamp */
+    border-radius: 50%;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(5deg);
+}
+
+.hr-stamp-okw::after {
+    content: 'OKW';
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a4f9c;
+}
+
+/* Effects */
+.hr-effect-wear::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.1);
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.01) 40px, rgba(0,0,0,0.01) 41px);
+    z-index: 10;
+}

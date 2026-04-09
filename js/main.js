@@ -11,7 +11,10 @@ const App = {
             american: AmericanTemplate,
             med_soviet: MedSovietTemplate,
             med_reich: MedReichTemplate,
-            med_american: MedAmericanTemplate
+            med_american: MedAmericanTemplate,
+            hq_soviet: HqSovietTemplate,
+            hq_reich: HqReichTemplate,
+            hq_american: HqAmericanTemplate
         };
 
         this.renderStyleCards();
@@ -27,6 +30,9 @@ const App = {
             { id: 'med_soviet', category: 'medical', name: 'Карточка раненого', desc: 'Медицинская карточка передового района (РККА). Диагнозы, красные кресты.', icon: '🏥', tag: 'Мед. РККА' },
             { id: 'med_reich', category: 'medical', name: 'Lazarett-Karte', desc: 'Медицинская карта раненого бойца Wehrmacht. Готические заголовки, клинический подход.', icon: '⚕️', tag: 'Мед. Wehrmacht' },
             { id: 'med_american', category: 'medical', name: 'Emergency Tag', desc: 'Field Medical Record. Полевая бирка солдата US Army с красным текстом.', icon: '🩺', tag: 'Мед. US Army' },
+            { id: 'hq_soviet', category: 'hq', name: 'Спецсообщение', desc: 'Донесение / Специальное сообщение (НКВД/СМЕРШ) с рукописной резолюцией вождя.', icon: '📝', tag: 'Штаб РККА' },
+            { id: 'hq_reich', category: 'hq', name: 'OKW-Befehl', desc: 'Секретный приказ Верховного командования вермахта. Geheime Kommandosache.', icon: '🦅', tag: 'ОКВ / Рейх' },
+            { id: 'hq_american', category: 'hq', name: 'War Dept. Memo', desc: 'Секретный меморандум War Department (США). Строгий машинописный формат.', icon: '📁', tag: 'US Pentagon' }
         ];
         
         const cards = allCards.filter(c => c.category === this.currentCategory);

@@ -48,8 +48,10 @@ const Editor = {
                     html += `<select class="form-select" data-field="${field.id}" onchange="Editor.handleInput(event)">`;
                     html += `<option value="">— выбрать —</option>`;
                     for (const opt of field.options) {
-                        const selected = this.formData[field.id] === opt ? 'selected' : '';
-                        html += `<option value="${opt}" ${selected}>${opt}</option>`;
+                        const val = typeof opt === 'object' ? opt.value : opt;
+                        const label = typeof opt === 'object' ? opt.label : opt;
+                        const selected = this.formData[field.id] === val ? 'selected' : '';
+                        html += `<option value="${val}" ${selected}>${label}</option>`;
                     }
                     html += `</select>`;
                 } else if (field.type === 'textarea') {

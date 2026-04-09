@@ -72,7 +72,6 @@ const SovietTemplate = {
                     <div class="hole"></div>
                     <div class="hole"></div>
                 </div>
-                ${data.coffeeStain ? '<div class="effect-coffee"></div>' : ''}
                 ${data.stampSecret ? '<div class="stamp-secret">СОВЕРШЕННО СЕКРЕТНО</div>' : ''}
                 
                 <div class="header-block">
@@ -115,7 +114,9 @@ const SovietTemplate = {
                     <thead><tr><th>Дата</th><th>Фронт, направление</th></tr></thead>
                     <tbody>${this._renderTableRows(data.campaigns)}</tbody>
                 </table>
+                
                 <div class="page-num">Лист 1</div>
+                ${data.coffeeStain ? '<div class="effect-coffee"></div>' : ''}
             </div>
         `;
 

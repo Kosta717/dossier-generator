@@ -1,0 +1,116 @@
+/* ===== SOVIET HQ TEMPLATE ===== */
+.hq-soviet-page {
+    background-color: #f4efdf; /* Yellowish aged paper */
+    background-image: 
+        radial-gradient(circle, transparent 20%, #f4efdf 20%, #f4efdf 80%, transparent 80%, transparent),
+        radial-gradient(circle, transparent 20%, #f4efdf 20%, #f4efdf 80%, transparent 80%, transparent) 25px 25px;
+    background-size: 50px 50px;
+    color: #1a1b26; /* Dark blue/black typewriter ink */
+    font-family: 'Courier Prime', monospace;
+    padding: 30mm 25mm 20mm;
+    position: relative;
+    box-shadow: inset 0 0 60px rgba(100,80,60,0.1);
+}
+
+.hq-soviet-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(rgba(0,0,0,0.02) 0px, transparent 1px, transparent 20px);
+    z-index: 1;
+}
+
+.hq-soviet-page * {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0.5px 0px 1px rgba(0,0,0,0.2); /* Ink bleed effect */
+}
+
+.hq-soviet-page p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.hs-indent {
+    text-indent: 40px;
+}
+
+.hs-header-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.hs-left-col {
+    width: 40%;
+}
+
+.hs-right-col {
+    width: 55%;
+    text-align: right;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.hs-secret-stamp {
+    font-family: sans-serif;
+    color: #922;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.hs-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 40px 0 30px;
+    letter-spacing: 3px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.hs-body {
+    min-height: 100mm;
+    white-space: pre-wrap;
+}
+
+.hs-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    font-size: 16px;
+}
+
+.hs-from {
+    text-align: right;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Handwritten resolution */
+.hs-resolution {
+    position: absolute;
+    top: 35mm;
+    left: -45px;
+    width: 280px;
+    transform: rotate(-32deg);
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.1;
+    z-index: 10;
+    pointer-events: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    filter: blur(0.4px);
+    opacity: 0.9;
+}
+
+.hs-res-blue { color: #1a4f9c; }
+.hs-res-red { color: #bd3131; }
+.hs-res-black { color: #222; opacity: 0.85; }

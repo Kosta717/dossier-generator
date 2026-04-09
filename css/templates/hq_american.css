@@ -1,0 +1,240 @@
+/* ===== AMERICAN HQ MEMO TEMPLATE ===== */
+.hq-american-page {
+    background-color: #eee9d5; /* Off-white, slightly yellowish */
+    background-image: 
+        radial-gradient(#e5dfcf 1px, transparent 1px);
+    background-size: 4px 4px;
+    color: #1a1a1a;
+    font-family: 'Courier Prime', monospace;
+    padding: 25mm 25mm 20mm;
+    position: relative;
+    box-shadow: inset 0 0 50px rgba(80,50,20,0.08);
+}
+
+.hq-american-page * {
+    text-shadow: 0.5px 0 0.5px rgba(0,0,0,0.15);
+}
+
+.ha-header-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.ha-seal {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ha-seal::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+.ha-seal-text {
+    font-family: 'Old Standard TT', serif;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.ha-department-titles {
+    text-align: center;
+}
+
+.ha-title-main {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.ha-title-sub {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* Checkboxes */
+.ha-class-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+    border: 1px solid #111;
+    padding: 10px;
+    margin-bottom: 30px;
+    background: rgba(0,0,0,0.02);
+}
+
+.ha-class-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ha-class-box label {
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.ha-lbl-routing {
+    color: #922; /* Red ink for routing priority */
+}
+
+.ha-check {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #111;
+    position: relative;
+    background: #fff;
+}
+
+.ha-check.checked::after {
+    content: '\2715'; /* Multiplication X */
+    position: absolute;
+    top: -4px;
+    left: 1px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #111;
+}
+
+.ha-date-row {
+    text-align: right;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.ha-date-label {
+    display: inline-block;
+}
+
+.ha-date-val {
+    display: inline-block;
+    min-width: 180px;
+    border-bottom: 1.5px solid #111;
+    text-align: center;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.ha-memo-row {
+    display: flex;
+    margin-bottom: 18px;
+    font-size: 16px;
+    align-items: flex-end;
+}
+
+.ha-memo-label {
+    font-weight: 700;
+    margin-right: 15px;
+    min-width: 160px;
+}
+
+.ha-memo-val {
+    flex: 1;
+    border-bottom: 1.5px solid #111;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.ha-body {
+    margin: 40px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 90mm;
+    white-space: pre-wrap;
+}
+
+.ha-body p {
+    margin-bottom: 15px;
+    text-indent: 40px;
+}
+
+.ha-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ha-sig-block {
+    width: 250px;
+    text-align: center;
+}
+
+.ha-sig-actual {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #1a4f9c;
+    margin-bottom: -5px;
+}
+
+.ha-sig-typed {
+    font-size: 16px;
+    border-top: 1px solid #000;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ha-sig-title {
+    font-size: 14px;
+}
+
+.ha-bottom-stamp {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Effects */
+.ha-red-stamp {
+    position: absolute;
+    top: 50mm;
+    left: 45%;
+    transform: rotate(-15deg) translate(-50%, -50%);
+    color: #c33;
+    font-family: sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    border: 6px solid #c33;
+    padding: 10px 20px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.ha-effect-wear::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,0.01) 0%, transparent 60%);
+    z-index: 10;
+}
