@@ -1,0 +1,291 @@
+/* CSS FOR ID CARDS (SMALL FORMAT) */
+
+.id-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 297mm;
+    padding: 20mm;
+    background: #e0e0e0;
+}
+
+/* Base ID card size: approx 120x85mm (Standard for many historical IDs) */
+.id-card {
+    width: 130mm;
+    height: 92mm;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    color: #000;
+    display: flex;
+    border-radius: 4px;
+}
+
+/* Book fold effect */
+.id-card::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, 
+        rgba(0,0,0,0.1) 0%, 
+        rgba(0,0,0,0.3) 50%, 
+        rgba(0,0,0,0.1) 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* SOVIET ID (RED BOOK) */
+.id-soviet-cover {
+    background-color: #832727;
+    background-image: 
+        repeating-linear-gradient(attr(x) 45deg, rgba(255,255,255,0.02) 2px, rgba(0,0,0,0.02) 4px),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 80%);
+    /* Realistic cloth texture */
+    background-blend-mode: multiply;
+    background-size: 100% 100%, 3px 3px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e6c200;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    padding: 15px;
+    position: relative;
+}
+
+.id-soviet-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.id-sov-crest {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.id-sov-cover-text {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.id-soviet-inner {
+    width: 50%;
+    height: 100%;
+    background: #fdf5e6;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' opacity='0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    padding: 10mm;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.id-sov-photo-box {
+    width: 32mm;
+    height: 42mm;
+    border: 1px solid #999;
+    margin-bottom: 15px;
+    background: #e8e8e8;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.foto-stamp {
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(139,0,0,0.6);
+    border-radius: 50%;
+    color: rgba(139,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transform: rotate(-25deg);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(0.5px);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.id-sov-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.id-sov-field {
+    border-bottom: 0.5px solid rgba(0,0,0,0.3);
+    margin-bottom: 8px;
+    min-height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.id-sov-label {
+    font-size: 8px;
+    color: #444;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.id-sov-val {
+    font-weight: 700;
+    color: #111;
+    text-transform: uppercase;
+}
+
+/* REICH KENNKARTE */
+.id-reich-card {
+    width: 140mm;
+    height: 105mm;
+    background-color: #e2dfcf;
+    background-image: 
+        repeating-linear-gradient(rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 3px);
+    border: 1pt solid #444;
+    padding: 12mm;
+    font-family: 'Old Standard TT', serif;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    position: relative;
+    border-radius: 2px;
+}
+
+.id-reich-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.id-reich-header {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.id-reich-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.id-reich-main {
+    display: flex;
+    gap: 15px;
+}
+
+.id-reich-left { width: 40mm; }
+.id-reich-right { flex: 1; }
+
+.id-reich-pic {
+    width: 38mm;
+    height: 48mm;
+    border: 3px double #333;
+    background: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.id-reich-pic img { width: 100%; height: 100%; object-fit: cover; }
+
+.id-reich-field {
+    margin-bottom: 12px;
+    font-size: 13px;
+    border-bottom: 0.5px solid rgba(0,0,0,0.2);
+    padding-bottom: 2px;
+}
+
+.id-reich-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #333;
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 700;
+}
+
+.id-reich-val {
+    font-weight: 900;
+    color: #000;
+}
+
+.id-reich-val {
+    border-bottom: 1px solid #111;
+    display: inline-block;
+    min-width: 60%;
+}
+
+/* USA ID CARD */
+.id-usa-card {
+    width: 120mm;
+    height: 80mm;
+    background: #ede9da;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+    border: 1.5pt solid #222;
+    padding: 25px;
+    font-family: 'Courier Prime', monospace;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    color: #000;
+}
+
+.id-usa-header {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.5px;
+}
+
+.id-usa-photo {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    width: 32mm;
+    height: 40mm;
+    border: 1px solid #000;
+    padding: 2px;
+    background: #fff;
+}
+
+.id-usa-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.id-usa-stamp {
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+    width: 60px; height: 60px;
+    border: 2px solid rgba(150,0,0,0.4);
+    border-radius: 50%;
+    color: rgba(150,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    transform: rotate(-15deg);
+}

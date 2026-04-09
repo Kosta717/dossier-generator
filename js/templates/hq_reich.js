@@ -23,7 +23,9 @@ const HqReichTemplate = {
             ]},
             { section: 'Optik (Оформление)', fields: [
                 { id: 'paperWear', label: 'Износ бумаги', type: 'checkbox' },
-                { id: 'stampOkw', label: 'Гербовая печать (OKW)', type: 'checkbox' }
+                { id: 'stampOkw', label: 'Гербовая печать (OKW)', type: 'checkbox' },
+                { id: 'burned', label: 'Опаленные края', type: 'checkbox' },
+                { id: 'holes', label: 'Следы от пуль', type: 'checkbox' }
             ]}
         ];
     },
@@ -35,7 +37,7 @@ const HqReichTemplate = {
 
     renderPreview(data) {
         const page1 = `
-            <div class="a4-page hq-reich-page ${data.paperWear ? 'effect-wear' : ''}">
+            <div class="a4-page hq-reich-page ${data.paperWear ? 'effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                 <div class="hr-border-outer">
                     
                     <div class="hr-head-row">

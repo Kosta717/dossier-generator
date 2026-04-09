@@ -3,12 +3,60 @@ const Editor = {
     currentTemplate: null,
     formData: {},
     photoData: null,
+    sigCanvas: null,
+    sigCtx: null,
+    isDrawing: false,
+    currentSigField: null,
 
     init(template) {
         this.currentTemplate = template;
         this.formData = this.loadData(template.id) || {};
         this.renderForm();
         this.updatePreview();
+        this.initSignatureCanvas();
+    },
+
+    initSignatureCanvas() {
+        this.sigCanvas = document.getElementById('signature-canvas');
+        if (!this.sigCanvas) return;
+        this.sigCtx = this.sigCanvas.getContext('2d');
+        this.sigCtx.strokeStyle = '#222';
+        this.sigCtx.lineWidth = 2.5;
+        this.sigCtx.lineCap = 'round';
+        this.sigCtx.lineJoin = 'round';
+
+        const getPos = (e) => {
+            const rect = this.sigCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        };
+
+        const start = (e) => {
+            this.isDrawing = true;
+            const pos = getPos(e);
+            this.sigCtx.beginPath();
+            this.sigCtx.moveTo(pos.x, pos.y);
+            e.preventDefault();
+        };
+
+        const draw = (e) => {
+            if (!this.isDrawing) return;
+            const pos = getPos(e);
+            this.sigCtx.lineTo(pos.x, pos.y);
+            this.sigCtx.stroke();
+            e.preventDefault();
+        };
+
+        const stop = () => { this.isDrawing = false; };
+
+        this.sigCanvas.addEventListener('mousedown', start);
+        this.sigCanvas.addEventListener('mousemove', draw);
+        window.addEventListener('mouseup', stop);
+
+        this.sigCanvas.addEventListener('touchstart', start, { passive: false });
+        this.sigCanvas.addEventListener('touchmove', draw, { passive: false });
+        this.sigCanvas.addEventListener('touchend', stop);
     },
 
     renderForm() {
@@ -54,6 +102,16 @@ const Editor = {
                         html += `<option value="${val}" ${selected}>${label}</option>`;
                     }
                     html += `</select>`;
+                } else if (field.type === 'signature') {
+                    html += `<label class="form-label">${field.label}</label>`;
+                    html += `
+                        <div class="signature-preview" onclick="Editor.openSignature('${field.id}')">
+                            ${this.formData[field.id] 
+                                ? `<img src="${this.formData[field.id]}" alt="Signature">`
+                                : `<span>Нажмите, чтобы расписаться</span>`
+                            }
+                        </div>
+                    `;
                 } else if (field.type === 'textarea') {
                     html += `<label class="form-label">${field.label}</label>`;
                     html += `<textarea class="form-textarea" data-field="${field.id}" 
@@ -141,6 +199,38 @@ const Editor = {
     updatePreview() {
         const container = document.getElementById('preview-container');
         container.innerHTML = this.currentTemplate.renderPreview(this.formData);
+    },
+
+    handleGlobalFont(event) {
+        const container = document.getElementById('preview-container');
+        container.classList.remove('font-elite', 'font-courier', 'font-old');
+        container.classList.add(event.target.value);
+        this.formData.globalFont = event.target.value;
+    },
+
+    openSignature(fieldId) {
+        this.currentSigField = fieldId;
+        const modal = document.getElementById('signature-modal');
+        modal.classList.remove('hidden');
+        this.clearSignature();
+    },
+
+    closeSignature() {
+        document.getElementById('signature-modal').classList.add('hidden');
+    },
+
+    clearSignature() {
+        if (this.sigCtx) {
+            this.sigCtx.clearRect(0, 0, this.sigCanvas.width, this.sigCanvas.height);
+        }
+    },
+
+    saveSignature() {
+        const dataUrl = this.sigCanvas.toDataURL('image/png');
+        this.formData[this.currentSigField] = dataUrl;
+        this.renderForm();
+        this.updatePreview();
+        this.closeSignature();
     },
 
     saveData(templateId) {

@@ -31,7 +31,10 @@ const MedSovietTemplate = {
             ]},
             { section: 'Оформление (Эффекты)', fields: [
                 { id: 'bloodStain', label: 'Пятна крови', type: 'checkbox' },
-                { id: 'paperWear', label: 'Помятая старая бумага', type: 'checkbox' }
+                { id: 'paperWear', label: 'Помятая старая бумага', type: 'checkbox' },
+                { id: 'burned', label: 'Опаленные края', type: 'checkbox' },
+                { id: 'holes', label: 'Следы от пуль', type: 'checkbox' },
+                { id: 'signature', label: 'Подпись врача (холст)', type: 'signature' }
             ]}
         ];
     },
@@ -43,7 +46,7 @@ const MedSovietTemplate = {
 
     renderPreview(data) {
         const page1 = `
-            <div class="a4-page med-soviet-page ${data.paperWear ? 'ms-effect-wear' : ''}">
+            <div class="a4-page med-soviet-page ${data.paperWear ? 'ms-effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                 ${data.bloodStain ? '<div class="ms-effect-blood"></div>' : ''}
                 
                 <div class="ms-cross-bg"></div>
@@ -115,6 +118,7 @@ const MedSovietTemplate = {
                     <div class="ms-doctor-sig">
                         <span>Подпись врача:</span>
                         <div class="ms-sig-line">
+                            ${data.signature ? `<img src="${data.signature}" style="height:30px;filter:contrast(1.5);margin-left:20px;">` : ''}
                             <div class="ms-stamp">МЕДСАНБАТ<br>РККА<br>№102</div>
                         </div>
                     </div>

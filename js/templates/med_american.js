@@ -28,11 +28,13 @@ const MedAmericanTemplate = {
             ]},
             { section: 'Disposition', fields: [
                 { id: 'disposition', label: 'Disposition (e.g. Sent to Aid Station)', type: 'text', placeholder: 'Evac to Battalion Aid Station' },
-                { id: 'medOfficer', label: 'Signature of Med. Officer', type: 'text', placeholder: 'Capt. R. Roe' }
+                { id: 'signature', label: 'Signature of Med. Officer', type: 'signature' }
             ]},
             { section: 'Aesthetics', fields: [
                 { id: 'bloodStain', label: 'Blood/Dirt Stains', type: 'checkbox' },
-                { id: 'paperWear', label: 'Paper Wear', type: 'checkbox' }
+                { id: 'paperWear', label: 'Paper Wear', type: 'checkbox' },
+                { id: 'burned', label: 'Burned Edges', type: 'checkbox' },
+                { id: 'holes', label: 'Bullet Holes', type: 'checkbox' }
             ]}
         ];
     },
@@ -45,8 +47,8 @@ const MedAmericanTemplate = {
     renderPreview(data) {
         const page1 = `
             <!-- We center the smaller tag inside the A4 area -->
-            <div class="a4-page" style="display:flex; justify-content:center; align-items:center; background:#ccc;">
-                <div class="med-am-tag ${data.paperWear ? 'ma-effect-wear' : ''}">
+            <div class="a4-page" style="display:flex; justify-content:center; align-items:center; background:#ccc; ${data.burned ? 'clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);' : ''}">
+                <div class="med-am-tag ${data.paperWear ? 'ma-effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                     
                     <div class="ma-hole">
                         <div class="ma-string"></div>
@@ -122,7 +124,9 @@ const MedAmericanTemplate = {
                         </div>
                         <div class="ma-row">
                             <span class="ma-label">Signature:</span>
-                            <span class="ma-val signature-font">${data.medOfficer || ''}</span>
+                            <span class="ma-val">
+                                ${data.signature ? `<img src="${data.signature}" style="height:25px;filter:contrast(1.5);">` : ''}
+                            </span>
                         </div>
 
                         <div class="ma-footer">Form 52b Medical Department, U.S. Army</div>

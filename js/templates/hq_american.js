@@ -30,13 +30,16 @@ const HqAmericanTemplate = {
             ]},
             { section: 'Signature (Подпись)', fields: [
                 { id: 'signOff', label: 'Прощание', type: 'text', placeholder: 'For the Commanding General:' },
-                { id: 'signature', label: 'Имя / Подпись', type: 'text', placeholder: 'G. C. MARSHALL' },
+                { id: 'signature', label: 'Рукописная подпись', type: 'signature' },
+                { id: 'sigName', label: 'Имя (печатными)', type: 'text', placeholder: 'G. C. MARSHALL' },
                 { id: 'sigTitle', label: 'Должность', type: 'text', placeholder: 'Chief of Staff' }
             ]},
             { section: 'Aesthetics (Оформление)', fields: [
-                { id: 'paperWear', label: 'Эффект старой бумаги', type: 'checkbox' },
+                { id: 'paperWear', label: 'Paper Aging', type: 'checkbox' },
                 { id: 'redStamp', label: 'Красный штамп секретности поверх текста', type: 'checkbox' },
-                { id: 'coffeeStain', label: 'Пятна от кофе', type: 'checkbox' }
+                { id: 'coffeeStain', label: 'Пятна от кофе', type: 'checkbox' },
+                { id: 'burned', label: 'Burned Edges', type: 'checkbox' },
+                { id: 'holes', label: 'Bullet Holes', type: 'checkbox' }
             ]}
         ];
     },
@@ -51,7 +54,7 @@ const HqAmericanTemplate = {
         const rt = data.routing || 'priority';
 
         const page1 = `
-            <div class="a4-page hq-american-page ${data.paperWear ? 'effect-wear' : ''}">
+            <div class="a4-page hq-american-page ${data.paperWear ? 'effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                 ${data.coffeeStain ? '<div class="effect-coffee-us"></div>' : ''}
                 ${data.redStamp ? `<div class="ha-red-stamp">${cl.replace('_', ' ')}</div>` : ''}
 
@@ -121,8 +124,10 @@ const HqAmericanTemplate = {
                 <div class="ha-footer">
                     <div class="ha-sig-block">
                         <div style="margin-bottom: 25px;">${data.signOff || 'For the Commanding General:'}</div>
-                        <div class="ha-sig-actual">${data.signature || ''}</div>
-                        <div class="ha-sig-typed">${data.signature || ''}</div>
+                        <div class="ha-sig-line">
+                            ${data.signature ? `<img src="${data.signature}" style="height:50px;filter:contrast(1.5);">` : ''}
+                        </div>
+                        <div class="ha-sig-typed">${data.sigName || ''}</div>
                         <div class="ha-sig-title">${data.sigTitle || ''}</div>
                     </div>
                 </div>

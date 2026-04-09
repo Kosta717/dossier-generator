@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/templates/hq_soviet.css">
     <link rel="stylesheet" href="css/templates/hq_reich.css">
     <link rel="stylesheet" href="css/templates/hq_american.css">
+    <link rel="stylesheet" href="css/templates/ids.css">
 </head>
 <body>
     <!-- STYLE SELECTOR SCREEN -->
@@ -33,6 +34,7 @@
                     <button class="tab-btn active" data-category="military">Военные Личные Дела</button>
                     <button class="tab-btn" data-category="medical">Медицинские Карты</button>
                     <button class="tab-btn" data-category="hq">Штабные Документы</button>
+                    <button class="tab-btn" data-category="ids">Удостоверения</button>
                 </div>
             </header>
             <div class="cards-grid" id="style-cards">
@@ -72,6 +74,17 @@
         <div class="editor-layout">
             <aside class="editor-sidebar" id="editor-sidebar">
                 <div class="sidebar-scroll">
+                    <div class="form-section">
+                        <div class="form-section-title">Глобальные настройки</div>
+                        <div class="form-group">
+                            <label class="form-label">Тип шрифта (Глобально)</label>
+                            <select class="form-select" id="font-selector" onchange="Editor.handleGlobalFont(event)">
+                                <option value="font-elite">Special Elite (Классика)</option>
+                                <option value="font-courier">Courier Prime (Строгий)</option>
+                                <option value="font-old">Old Standard (Газетный)</option>
+                            </select>
+                        </div>
+                    </div>
                     <form id="editor-form">
                         <!-- Form fields injected by JS -->
                     </form>
@@ -94,6 +107,23 @@
         <p class="loading-text">Генерация PDF...</p>
     </div>
 
+    <!-- Signature Modal -->
+    <div id="signature-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Поставьте подпись</h3>
+                <button class="modal-close" onclick="Editor.closeSignature()">✕</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="signature-canvas" width="500" height="200"></canvas>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" onclick="Editor.clearSignature()">Очистить</button>
+                <button class="modal-btn primary" onclick="Editor.saveSignature()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="js/templates/soviet.js"></script>
     <script src="js/templates/reich.js"></script>
@@ -104,6 +134,9 @@
     <script src="js/templates/hq_soviet.js"></script>
     <script src="js/templates/hq_reich.js"></script>
     <script src="js/templates/hq_american.js"></script>
+    <script src="js/templates/id_soviet.js"></script>
+    <script src="js/templates/id_reich.js"></script>
+    <script src="js/templates/id_american.js"></script>
     <script src="js/editor.js"></script>
     <script src="js/pdf-export.js"></script>
     <script src="js/main.js"></script>

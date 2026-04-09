@@ -32,7 +32,9 @@ const SovietTemplate = {
             { section: 'Оформление (Эффекты)', fields: [
                 { id: 'stampSecret', label: 'Штамп «СОВЕРШЕННО СЕКРЕТНО»', type: 'checkbox' },
                 { id: 'paperWear', label: 'Потертости бумаги', type: 'checkbox' },
-                { id: 'coffeeStain', label: 'Следы от кружки', type: 'checkbox' }
+                { id: 'coffeeStain', label: 'Следы от кружки', type: 'checkbox' },
+                { id: 'burned', label: 'Опаленные края', type: 'checkbox' },
+                { id: 'holes', label: 'Следы от пуль', type: 'checkbox' }
             ]},
             { section: 'Дополнительно', fields: [
                 { id: 'extraNotes', label: 'Дополнительные записи (Новый лист)', type: 'textarea', placeholder: 'Любая информация...' }
@@ -67,7 +69,7 @@ const SovietTemplate = {
 
     renderPreview(data) {
         const page1 = `
-            <div class="a4-page soviet-page ${data.paperWear ? 'effect-wear' : ''}">
+            <div class="a4-page soviet-page ${data.paperWear ? 'effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                 <div class="paper-holes">
                     <div class="hole"></div>
                     <div class="hole"></div>
@@ -120,8 +122,8 @@ const SovietTemplate = {
             </div>
         `;
 
-        const page2 = `
-            <div class="a4-page soviet-page ${data.paperWear ? 'effect-wear' : ''}">
+    const page2 = `
+            <div class="a4-page soviet-page ${data.paperWear ? 'effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                 <div class="paper-holes">
                     <div class="hole"></div>
                     <div class="hole"></div>

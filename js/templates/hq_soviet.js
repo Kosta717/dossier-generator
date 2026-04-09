@@ -27,7 +27,9 @@ const HqSovietTemplate = {
             ]},
             { section: 'Оформление', fields: [
                 { id: 'paperWear', label: 'Эффект старой бумаги', type: 'checkbox' },
-                { id: 'dirt', label: 'Следы грязи', type: 'checkbox' }
+                { id: 'dirt', label: 'Следы грязи', type: 'checkbox' },
+                { id: 'burned', label: 'Опаленные края', type: 'checkbox' },
+                { id: 'holes', label: 'Следы от пуль', type: 'checkbox' }
             ]}
         ];
     },
@@ -45,7 +47,7 @@ const HqSovietTemplate = {
     renderPreview(data) {
         const resColorClass = data.resColor ? 'hs-res-' + data.resColor : 'hs-res-blue';
         const page1 = `
-            <div class="a4-page hq-soviet-page ${data.paperWear ? 'effect-wear' : ''}">
+            <div class="a4-page hq-soviet-page ${data.paperWear ? 'effect-wear' : ''} ${data.burned ? 'effect-burned' : ''} ${data.holes ? 'effect-holes' : ''}">
                 
                 <div class="hs-resolution ${resColorClass}">
                     ${this._renderNewlines(data.resolution)}
