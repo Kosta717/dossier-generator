@@ -44,29 +44,28 @@ const PdfExport = {
                 renderArea.appendChild(clone);
             });
 
-            // Ждём загрузки шрифтов и рендеринга стилей
+            // Ждём загрузки шрифтов и рендеринга стилей чуть дольше для стабильности
             await document.fonts.ready;
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
             const opt = {
                 margin: 0,
                 filename: `${templateName || 'dossier'}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
+                image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: {
-                    scale: 2.5,
+                    scale: 2.0,            // Оптимально для качества и памяти
                     useCORS: true,
                     allowTaint: false,
                     logging: false,
                     backgroundColor: '#ffffff',
-                    windowWidth: 794,   // 210mm ≈ 794px при 96dpi
-                    windowHeight: 1123  // 297mm ≈ 1123px
+                    windowWidth: 1024,      // Стабильная ширина для захвата
+                    windowHeight: 1448
                 },
                 jsPDF: {
                     unit: 'mm',
                     format: 'a4',
                     orientation: 'portrait',
-                    compress: true,
-                    putOnlyUsedFonts: true
+                    compress: true
                 },
                 pagebreak: { mode: ['css', 'legacy'] }
             };
