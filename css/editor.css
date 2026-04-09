@@ -222,6 +222,7 @@
     inset: 0;
     opacity: 0;
     cursor: pointer;
+    z-index: 10;
 }
 .photo-upload svg {
     color: var(--text-muted);
@@ -237,6 +238,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    pointer-events: none;
 }
 
 /* ===== PREVIEW AREA ===== */
