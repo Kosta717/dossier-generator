@@ -11,6 +11,16 @@ const Editor = {
     init(template) {
         this.currentTemplate = template;
         this.formData = this.loadData(template.id) || {};
+        
+        // Apply global font from data
+        if (this.formData.globalFont) {
+            const container = document.getElementById('preview-container');
+            if (container) {
+                container.classList.remove('font-elite', 'font-courier', 'font-old');
+                container.classList.add(this.formData.globalFont);
+            }
+        }
+
         this.renderForm();
         this.updatePreview();
         this.initSignatureCanvas();
@@ -142,6 +152,12 @@ const Editor = {
         }
 
         form.innerHTML = html;
+
+        // Set global font selector value if exists
+        const fontSelector = document.getElementById('font-selector');
+        if (fontSelector && this.formData.globalFont) {
+            fontSelector.value = this.formData.globalFont;
+        }
     },
 
     handleInput(event) {
@@ -202,10 +218,14 @@ const Editor = {
     },
 
     handleGlobalFont(event) {
+        const fontValue = event.target.value;
         const container = document.getElementById('preview-container');
-        container.classList.remove('font-elite', 'font-courier', 'font-old');
-        container.classList.add(event.target.value);
-        this.formData.globalFont = event.target.value;
+        if (container) {
+            container.classList.remove('font-elite', 'font-courier', 'font-old');
+            container.classList.add(fontValue);
+        }
+        this.formData.globalFont = fontValue;
+        this.saveData(); // Save to persist choice
     },
 
     openSignature(fieldId) {

@@ -7,7 +7,7 @@
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
     color: #1a1a1a;
-    font-family: 'Old Standard TT', serif;
+    font-family: var(--font-typewriter), serif;
     padding: 30mm 20mm;
     position: relative;
     box-shadow: inset 0 0 80px rgba(100,80,60,0.15);
@@ -42,7 +42,7 @@
     right: 0;
     top: -10px;
     font-size: 10px;
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
 }
 
 .ms-title {
@@ -83,7 +83,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: sepia(0.3) contrast(1.1);
 }
 
 .ms-col-right {
@@ -109,7 +108,7 @@
 }
 
 .ms-val {
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     font-size: 14px;
     color: #225;
     flex: 1;
@@ -128,7 +127,7 @@
 }
 
 .ms-textarea-val {
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     font-size: 14px;
     color: #225;
     min-height: 80px;

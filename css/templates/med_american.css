@@ -13,7 +13,7 @@
     position: relative;
     padding: 25mm 10mm 15mm;
     color: #312;
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     border: 1px solid #a89467;
 }
 

@@ -4,7 +4,7 @@
     background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
     background-size: 100% 4px;
     color: #111;
-    font-family: 'Old Standard TT', serif;
+    font-family: var(--font-typewriter), serif;
     padding: 25mm 20mm;
     position: relative;
     box-shadow: inset 0 0 40px rgba(0,0,0,0.06);
@@ -38,12 +38,12 @@
 .hr-abs {
     font-size: 16px;
     font-weight: 700;
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
 }
 
 .hr-right {
     text-align: right;
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     font-size: 15px;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .hr-betrifft-text {
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     font-size: 18px;
     font-weight: 700;
     text-decoration: underline;
@@ -96,7 +96,7 @@
 
 .hr-body {
     margin: 0 35px;
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     font-size: 16px;
     line-height: 1.6;
     min-height: 80mm;
@@ -115,7 +115,7 @@
 }
 
 .hr-sig-title {
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     font-size: 16px;
     margin-bottom: 20px;
 }

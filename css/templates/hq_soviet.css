@@ -6,7 +6,7 @@
         radial-gradient(circle, transparent 20%, #f4efdf 20%, #f4efdf 80%, transparent 80%, transparent) 25px 25px;
     background-size: 50px 50px;
     color: #1a1b26; /* Dark blue/black typewriter ink */
-    font-family: 'Courier Prime', monospace;
+    font-family: var(--font-typewriter), monospace;
     padding: 30mm 25mm 20mm;
     position: relative;
     box-shadow: inset 0 0 60px rgba(100,80,60,0.1);
