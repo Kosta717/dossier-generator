@@ -10,8 +10,8 @@ const IdReichTemplate = {
             { section: 'Личные данные', fields: [
                 { id: 'kennort', label: 'Kennort (Место выдачи)', type: 'text', placeholder: 'Berlin' },
                 { id: 'nummer', label: 'Kennummer (Номер)', type: 'text', placeholder: 'A 12345' },
-                { id: 'name', label: 'Name (Фамилия)', type: 'text', placeholder: 'Müller' },
-                { id: 'vorname', label: 'Vorname (Имя)', type: 'text', placeholder: 'Hans' },
+                { id: 'name', label: 'Name (Имя)', type: 'text', placeholder: 'Müller' },
+                { id: 'vorname', label: 'Vorname (Фамилия)', type: 'text', placeholder: 'Hans' },
                 { id: 'geburt', label: 'Geburtstag (Дата рожд.)', type: 'text', placeholder: '12.04.1915' },
                 { id: 'signature', label: 'Unterschrift (Подпись)', type: 'signature' },
                 { id: 'photo', label: 'Фотография', type: 'photo' }
