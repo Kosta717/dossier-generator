@@ -98,11 +98,6 @@ const Editor = {
         }
         
         this.updatePreview();
-
-        // For D&D, re-render form when class changes (to update theme)
-        if (field === 'charClass' && this.currentTemplate.id === 'dnd') {
-            this.updatePreview();
-        }
     },
 
     handleCheckbox(event) {

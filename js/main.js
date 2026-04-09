@@ -2,12 +2,16 @@
 const App = {
     templates: {},
     currentStyle: null,
+    currentCategory: 'military',
 
     init() {
         this.templates = {
             soviet: SovietTemplate,
             reich: ReichTemplate,
-            american: AmericanTemplate
+            american: AmericanTemplate,
+            med_soviet: MedSovietTemplate,
+            med_reich: MedReichTemplate,
+            med_american: MedAmericanTemplate
         };
 
         this.renderStyleCards();
@@ -16,11 +20,16 @@ const App = {
 
     renderStyleCards() {
         const grid = document.getElementById('style-cards');
-        const cards = [
-            { id: 'soviet', name: 'Советский солдат', desc: 'Личное дело военнослужащего РККА. Пожелтевшая бумага, красные звёзды, штампы, печатная машинка.', icon: '☭', tag: 'РККА / СА' },
-            { id: 'reich', name: 'Солдат Рейха', desc: 'Personalakte Wehrmacht. Готический шрифт, орлы, штамп «Geheim», двойные рамки.', icon: '🦅', tag: 'Wehrmacht' },
-            { id: 'american', name: 'Американский солдат', desc: 'DA Form 20 — Personnel Record. Оливковый стиль US Army, гриф CLASSIFIED, дырочки от дырокола.', icon: '🎖️', tag: 'US Army' },
+        const allCards = [
+            { id: 'soviet', category: 'military', name: 'Советский солдат', desc: 'Личное дело военнослужащего РККА. Пожелтевшая бумага, красные звёзды, штампы, печатная машинка.', icon: '☭', tag: 'РККА / СА' },
+            { id: 'reich', category: 'military', name: 'Солдат Рейха', desc: 'Personalakte Wehrmacht. Готический шрифт, орлы, штамп «Geheim», двойные рамки.', icon: '🦅', tag: 'Wehrmacht' },
+            { id: 'american', category: 'military', name: 'Американский солдат', desc: 'DA Form 20 — Personnel Record. Оливковый стиль US Army, гриф CLASSIFIED, дырочки от дырокола.', icon: '🎖️', tag: 'US Army' },
+            { id: 'med_soviet', category: 'medical', name: 'Карточка раненого', desc: 'Медицинская карточка передового района (РККА). Диагнозы, красные кресты.', icon: '🏥', tag: 'Мед. РККА' },
+            { id: 'med_reich', category: 'medical', name: 'Lazarett-Karte', desc: 'Медицинская карта раненого бойца Wehrmacht. Готические заголовки, клинический подход.', icon: '⚕️', tag: 'Мед. Wehrmacht' },
+            { id: 'med_american', category: 'medical', name: 'Emergency Tag', desc: 'Field Medical Record. Полевая бирка солдата US Army с красным текстом.', icon: '🩺', tag: 'Мед. US Army' },
         ];
+        
+        const cards = allCards.filter(c => c.category === this.currentCategory);
 
         const makeCard = (card) => `
             <div class="style-card" data-style="${card.id}" onclick="App.selectStyle('${card.id}')">
@@ -49,6 +58,15 @@ const App = {
         });
         document.getElementById('input-import-json').addEventListener('change', (e) => this.importJson(e));
         document.getElementById('btn-export-json').addEventListener('click', () => this.exportJson());
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                this.currentCategory = e.target.dataset.category;
+                this.renderStyleCards();
+            });
+        });
     },
 
     selectStyle(styleId) {

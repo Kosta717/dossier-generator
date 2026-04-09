@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личное Дело — Генератор Досье Персонажа</title>
-    <meta name="description" content="Создайте стилизованное личное дело для вашего персонажа: военное досье СССР, Рейха, США, лист D&D или Call of Cthulhu. Экспорт в PDF.">
+    <meta name="description" content="Создайте стилизованные личные дела и медицинские карты ваших персонажей: СССР, Рейх, США. Экспорт в PDF.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Special+Elite&family=UnifrakturMaguntia&family=Old+Standard+TT:wght@400;700&family=Courier+Prime:wght@400;700&family=Playfair+Display:wght@400;700;900&family=MedievalSharp&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/templates/soviet.css">
     <link rel="stylesheet" href="css/templates/reich.css">
     <link rel="stylesheet" href="css/templates/american.css">
+    <link rel="stylesheet" href="css/templates/med_soviet.css">
+    <link rel="stylesheet" href="css/templates/med_reich.css">
+    <link rel="stylesheet" href="css/templates/med_american.css">
 </head>
 <body>
     <!-- STYLE SELECTOR SCREEN -->
@@ -23,6 +26,10 @@
             <header class="selector-header">
                 <h1 class="selector-title">ЛИЧНОЕ ДЕЛО</h1>
                 <p class="selector-subtitle">Генератор досье персонажа</p>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="military">Военные Личные Дела</button>
+                    <button class="tab-btn" data-category="medical">Медицинские Карты</button>
+                </div>
             </header>
             <div class="cards-grid" id="style-cards">
                 <!-- Cards injected by JS -->
@@ -87,6 +94,9 @@
     <script src="js/templates/soviet.js"></script>
     <script src="js/templates/reich.js"></script>
     <script src="js/templates/american.js"></script>
+    <script src="js/templates/med_soviet.js"></script>
+    <script src="js/templates/med_reich.js"></script>
+    <script src="js/templates/med_american.js"></script>
     <script src="js/editor.js"></script>
     <script src="js/pdf-export.js"></script>
     <script src="js/main.js"></script>
