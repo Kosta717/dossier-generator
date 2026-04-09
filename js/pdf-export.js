@@ -1,13 +1,10 @@
-// PDF Export module
+// pdf-export.js (исправленная версия)
 const PdfExport = {
-
     async exportPdf(templateName) {
         const overlay = document.getElementById('loading-overlay');
         overlay.classList.remove('hidden');
 
         try {
-            // Clone preview pages into the render area for clean capture
-            const renderArea = document.getElementById('pdf-render-area');
             const previewContainer = document.getElementById('preview-container');
             const pages = previewContainer.querySelectorAll('.a4-page');
 
@@ -17,66 +14,69 @@ const PdfExport = {
                 return;
             }
 
-            // Build a container with pages for rendering
-            renderArea.innerHTML = '';
-            const pagesClone = [];
+            // Создаём временный контейнер с теми же классами, что и у preview-container
+            const renderArea = document.createElement('div');
+            renderArea.className = previewContainer.className;
 
-            pages.forEach((page, i) => {
-                const clone = page.cloneNode(true);
-                clone.style.margin = '0';
-                clone.style.boxShadow = 'none';
-                clone.style.pageBreakAfter = 'always';
-                renderArea.appendChild(clone);
-                pagesClone.push(clone);
+            Object.assign(renderArea.style, {
+                position: 'fixed',
+                left: '0',
+                top: '0',
+                width: '210mm',
+                background: 'white',
+                zIndex: '-10000',
+                opacity: '1',
+                visibility: 'visible',
+                pointerEvents: 'none'
             });
 
-            // Generate PDF using html2pdf
+            document.body.appendChild(renderArea);
+
+            // Клонируем страницы, убираем масштабирование и задаём точные размеры
+            pages.forEach((page) => {
+                const clone = page.cloneNode(true);
+                clone.style.transform = 'none';
+                clone.style.margin = '0 auto';
+                clone.style.boxShadow = 'none';
+                clone.style.pageBreakAfter = 'always';
+                clone.style.width = '210mm';
+                clone.style.height = '297mm';
+                renderArea.appendChild(clone);
+            });
+
+            // Ждём загрузки шрифтов и рендеринга стилей
+            await document.fonts.ready;
+            await new Promise(resolve => setTimeout(resolve, 500));
+
             const opt = {
                 margin: 0,
                 filename: `${templateName || 'dossier'}.pdf`,
-                image: { type: 'jpeg', quality: 0.95 },
-                html2canvas: { 
-                    scale: 2,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2.5,
                     useCORS: true,
-                    allowTaint: true,
+                    allowTaint: false,
                     logging: false,
-                    width: 794,  // 210mm at 96dpi
-                    windowWidth: 794
+                    backgroundColor: '#ffffff',
+                    windowWidth: 794,   // 210mm ≈ 794px при 96dpi
+                    windowHeight: 1123  // 297mm ≈ 1123px
                 },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'portrait'
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait',
+                    compress: true,
+                    putOnlyUsedFonts: true
                 },
                 pagebreak: { mode: ['css', 'legacy'] }
             };
 
-            // Generate page by page and merge
-            const pdf = await html2pdf().set(opt).from(pagesClone[0]).toPdf().get('pdf');
+            await html2pdf().set(opt).from(renderArea).save();
+            document.body.removeChild(renderArea);
 
-            for (let i = 1; i < pagesClone.length; i++) {
-                pdf.addPage();
-                const canvas = await html2canvas(pagesClone[i], {
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    logging: false,
-                    width: 794,
-                    windowWidth: 794
-                });
-                const imgData = canvas.toDataURL('image/jpeg', 0.95);
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-            }
-
-            pdf.save(`${templateName || 'dossier'}.pdf`);
-
-            // Clean up
-            renderArea.innerHTML = '';
         } catch (err) {
             console.error('PDF export error:', err);
-            alert('Ошибка при генерации PDF. Попробуйте ещё раз.');
+            alert('Ошибка при генерации PDF. Проверьте консоль (F12).');
         } finally {
             overlay.classList.add('hidden');
         }

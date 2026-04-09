@@ -162,7 +162,7 @@
         repeating-linear-gradient(90deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 3px);
     border: 1pt solid #444;
     padding: 12mm;
-    font-family: 'Old Standard TT', serif;
+    font-family: var(--font-typewriter), serif;
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     position: relative;
     border-radius: 2px;

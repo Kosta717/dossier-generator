@@ -223,7 +223,7 @@ const ReichTemplate = {
                 <div class="fusszeile">
                     ДЕЛО ХРАНИТЬ КОНФИДЕНЦИАЛЬНО
                 </div>
-                <div style="margin-top: 12px; font-size: 10px; opacity: 0.4; display: flex; justify-content: space-between; font-family: 'Courier Prime'; width: 100%;">
+                <div style="margin-top: 12px; font-size: 10px; opacity: 0.4; display: flex; justify-content: space-between; font-family: var(--font-typewriter), monospace; width: 100%;">
                     <span>МАШИНОПИСЬ · РЕФ. II B</span>
                     <span>КОПИЯ В АРХИВ</span>
                 </div>
