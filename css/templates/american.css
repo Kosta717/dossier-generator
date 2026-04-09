@@ -1,0 +1,178 @@
+/* ===== AMERICAN DOSSIER TEMPLATE (DA Form 20 Style) ===== */
+
+.american-page {
+    font-family: 'Courier Prime', Courier, monospace;
+    background-color: #dcd2b8; /* Manila folder / Kraft paper color */
+    background-image: 
+        radial-gradient(circle at 70% 30%, rgba(180, 170, 150, 0.2) 0%, transparent 40%),
+        url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.04"/></svg>');
+    padding: 12mm;
+    position: relative;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+}
+
+.american-page * {
+    box-sizing: border-box;
+}
+
+.american-page .stamp-classified {
+    position: absolute;
+    top: 15mm;
+    right: 15mm;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #a02020;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Header */
+.american-page .am-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+}
+
+.american-page .am-form-title {
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+/* Base form grid */
+.american-page .am-grid-row {
+    display: flex;
+    border: 1px solid #000;
+    border-top: none; /* collapse borders */
+}
+
+/* Individual box in grid */
+.american-page .am-box {
+    border-right: 1px solid #000;
+    padding: 2px 4px 6px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+}
+
+.american-page .am-box:last-child {
+    border-right: none;
+}
+
+/* Flex sizing shortcuts */
+.american-page .am-w-half { flex: 0 0 50%; }
+.american-page .am-w-third { flex: 0 0 33.33%; }
+.american-page .am-w-quart { flex: 0 0 25%; }
+.american-page .am-w-auto { flex: 1; }
+
+.american-page .am-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 2px;
+    line-height: 1;
+}
+
+.american-page .am-value {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    min-height: 16px;
+    white-space: pre-wrap;
+}
+
+/* Multi-line text block */
+.american-page .am-text-area {
+    width: 100%;
+    border: 1px solid #000;
+    border-top: none;
+    padding: 2px 4px 6px;
+}
+
+.american-page .am-text-value {
+    font-size: 11px;
+    margin-top: 4px;
+    white-space: pre-wrap;
+    min-height: 50px;
+}
+
+.american-page .foto-box {
+    width: 100px;
+    height: 120px;
+    border: 2px solid #000;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 5px;
+    align-self: flex-end;
+}
+
+.american-page .foto-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.4) contrast(1.1);
+}
+
+.american-page .am-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+.american-page .am-table th, .american-page .am-table td {
+    border: 1px solid #000;
+    padding: 3px 5px;
+}
+
+.american-page .am-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.american-page .fingerprint-box {
+    width: 70px;
+    height: 90px;
+    border: 1px dashed #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    color: rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.american-page .stamp-sig {
+    width: 200px;
+    border-bottom: 1px solid #000;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+}
+
+.american-page .page-num {
+    margin-top: auto;
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+}

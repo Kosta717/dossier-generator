@@ -1,0 +1,364 @@
+/* ===== D&D FANTASY DOSSIER TEMPLATE ===== */
+.dnd-page {
+    font-family: 'IM Fell English', 'Palatino', serif;
+    background: #e8d8b0;
+    padding: 0;
+    color: #2a1a0a;
+    position: relative;
+}
+
+/* Parchment multi-layer texture */
+.dnd-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(to right, rgba(100,60,20,0.15) 0%, rgba(100,60,20,0.03) 2%, transparent 4%, transparent 96%, rgba(100,60,20,0.03) 98%, rgba(100,60,20,0.15) 100%),
+        linear-gradient(to bottom, rgba(100,60,20,0.12) 0%, transparent 2%, transparent 98%, rgba(100,60,20,0.12) 100%),
+        radial-gradient(ellipse at 40% 30%, rgba(140,100,40,0.1), transparent 50%),
+        radial-gradient(ellipse at 70% 70%, rgba(120,80,30,0.08), transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Burn mark / age stain */
+.dnd-page::after {
+    content: '';
+    position: absolute;
+    bottom: 30mm;
+    left: 25mm;
+    width: 50mm;
+    height: 50mm;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 30%, rgba(100,60,10,0.04) 50%, rgba(100,60,10,0.06) 65%, transparent 75%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dnd-inner {
+    position: relative;
+    z-index: 2;
+    padding: 14mm 16mm 16mm 18mm;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Decorative border */
+.dnd-border {
+    position: absolute;
+    inset: 5mm;
+    border: 2.5px solid rgba(120,80,30,0.2);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.dnd-border::before {
+    content: '';
+    position: absolute;
+    inset: 2mm;
+    border: 0.5px solid rgba(120,80,30,0.1);
+}
+
+/* Corner ornaments */
+.dnd-corner {
+    position: absolute;
+    width: 14mm;
+    height: 14mm;
+    color: rgba(120,80,30,0.22);
+    font-size: 22pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+}
+.dnd-corner.tl { top: 3mm; left: 3mm; }
+.dnd-corner.tr { top: 3mm; right: 3mm; transform: scaleX(-1); }
+.dnd-corner.bl { bottom: 3mm; left: 3mm; transform: scaleY(-1); }
+.dnd-corner.br { bottom: 3mm; right: 3mm; transform: scale(-1,-1); }
+
+/* Header — dossier style, not character sheet */
+.dnd-header {
+    text-align: center;
+    margin-bottom: 5mm;
+    padding-bottom: 4mm;
+    position: relative;
+}
+
+.dnd-header-icon {
+    font-size: 30pt;
+    margin-bottom: 1mm;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.dnd-header-title {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 20pt;
+    letter-spacing: 0.06em;
+    margin-bottom: 1mm;
+}
+
+.dnd-header-subtitle {
+    font-size: 11pt;
+    font-style: italic;
+    color: #5a3a1a;
+    letter-spacing: 0.08em;
+}
+
+.dnd-header-org {
+    font-size: 8pt;
+    color: #7a5a2a;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 2mm;
+}
+
+.dnd-divider {
+    width: 50%;
+    margin: 3mm auto;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(120,80,30,0.35), transparent);
+}
+
+/* Seal / wax stamp */
+.dnd-seal {
+    position: absolute;
+    top: 10mm;
+    right: 12mm;
+    width: 24mm;
+    height: 24mm;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    font-size: 20pt;
+    opacity: 0.25;
+    transform: rotate(15deg);
+}
+
+/* Fields — dossier style */
+.dnd-field {
+    display: flex;
+    align-items: baseline;
+    gap: 2mm;
+    padding: 1.5mm 0;
+    border-bottom: 1px solid rgba(120,80,30,0.12);
+}
+
+.dnd-field-label {
+    font-size: 8pt;
+    color: #6a4a2a;
+    white-space: nowrap;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-width: 26mm;
+}
+
+.dnd-field-value {
+    flex: 1;
+    font-size: 10.5pt;
+    word-break: break-word;
+}
+
+.dnd-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.dnd-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1mm 4mm;
+    margin: 2mm 0;
+}
+
+/* Photo — portrait in gilded frame feel */
+.dnd-portrait {
+    width: 32mm;
+    height: 42mm;
+    border: 2px solid rgba(120,80,30,0.3);
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7pt;
+    color: #aaa;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.15), inset 0 0 8px rgba(120,80,30,0.1);
+}
+
+.dnd-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Stat boxes — small, inline, dossier-appropriate */
+.dnd-stats-row {
+    display: flex;
+    gap: 2mm;
+    margin: 3mm 0;
+    flex-wrap: wrap;
+}
+
+.dnd-stat-box {
+    text-align: center;
+    border: 1.5px solid rgba(120,80,30,0.2);
+    border-radius: 1.5mm;
+    padding: 2mm 3mm 1.5mm;
+    background: rgba(255,255,255,0.25);
+    min-width: 16mm;
+    flex: 1;
+}
+
+.dnd-stat-name {
+    font-size: 6pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6a4a2a;
+    margin-bottom: 0.5mm;
+}
+
+.dnd-stat-value {
+    font-size: 14pt;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.dnd-stat-mod {
+    font-size: 8pt;
+    color: #6a4a2a;
+    margin-top: 0.3mm;
+}
+
+/* Section titles — dossier style */
+.dnd-section-title {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 12pt;
+    color: #3a1a0a;
+    margin: 5mm 0 2mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 1px solid rgba(120,80,30,0.2);
+    position: relative;
+}
+
+.dnd-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 30mm;
+    height: 1.5px;
+}
+
+/* Text blocks */
+.dnd-text-block {
+    margin: 2mm 0;
+    padding: 3mm;
+    border: 1px solid rgba(120,80,30,0.12);
+    background: rgba(255,255,255,0.18);
+    font-size: 10pt;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    min-height: 12mm;
+}
+
+/* Table for equipment/spells */
+.dnd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin: 2mm 0;
+}
+.dnd-table th, .dnd-table td {
+    border: 1px solid rgba(120,80,30,0.15);
+    padding: 1.5mm 3mm;
+    text-align: left;
+}
+.dnd-table th {
+    background: rgba(120,80,30,0.06);
+    font-weight: 700;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6a4a2a;
+}
+
+/* Page number */
+.dnd-page-number {
+    position: absolute;
+    bottom: 7mm;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8.5pt;
+    color: rgba(90,58,26,0.4);
+    font-style: italic;
+    z-index: 5;
+}
+
+/* ===== CLASS THEMES ===== */
+.dnd-page.class-barbarian .dnd-header-title { color: #8b0000; }
+.dnd-page.class-barbarian .dnd-section-title { color: #6b0000; }
+.dnd-page.class-barbarian .dnd-section-title::after { background: linear-gradient(to right, #8b0000, transparent); }
+.dnd-page.class-barbarian .dnd-stat-box { border-color: rgba(139,0,0,0.25); }
+.dnd-page.class-barbarian .dnd-border { border-color: rgba(139,0,0,0.2); }
+
+.dnd-page.class-bard .dnd-header-title { color: #7b2d8e; }
+.dnd-page.class-bard .dnd-section-title { color: #5a1a6a; }
+.dnd-page.class-bard .dnd-section-title::after { background: linear-gradient(to right, #7b2d8e, transparent); }
+.dnd-page.class-bard .dnd-stat-box { border-color: rgba(123,45,142,0.25); }
+.dnd-page.class-bard .dnd-border { border-color: rgba(123,45,142,0.2); }
+
+.dnd-page.class-cleric .dnd-header-title { color: #b8860b; }
+.dnd-page.class-cleric .dnd-section-title { color: #8a6408; }
+.dnd-page.class-cleric .dnd-section-title::after { background: linear-gradient(to right, #b8860b, transparent); }
+.dnd-page.class-cleric .dnd-stat-box { border-color: rgba(184,134,11,0.25); }
+.dnd-page.class-cleric .dnd-border { border-color: rgba(184,134,11,0.2); }
+
+.dnd-page.class-druid .dnd-header-title { color: #2d6b2d; }
+.dnd-page.class-druid .dnd-section-title { color: #1e4e1e; }
+.dnd-page.class-druid .dnd-section-title::after { background: linear-gradient(to right, #2d6b2d, transparent); }
+.dnd-page.class-druid .dnd-stat-box { border-color: rgba(45,107,45,0.25); }
+.dnd-page.class-druid .dnd-border { border-color: rgba(45,107,45,0.2); }
+
+.dnd-page.class-fighter .dnd-header-title { color: #4a4a5a; }
+.dnd-page.class-fighter .dnd-section-title { color: #3a3a4a; }
+.dnd-page.class-fighter .dnd-section-title::after { background: linear-gradient(to right, #4a4a5a, transparent); }
+.dnd-page.class-fighter .dnd-stat-box { border-color: rgba(74,74,90,0.25); }
+
+.dnd-page.class-monk .dnd-header-title { color: #9a6c00; }
+.dnd-page.class-monk .dnd-section-title { color: #7a5400; }
+.dnd-page.class-monk .dnd-section-title::after { background: linear-gradient(to right, #9a6c00, transparent); }
+
+.dnd-page.class-paladin .dnd-header-title { color: #9a7d00; }
+.dnd-page.class-paladin .dnd-section-title { color: #7a6000; }
+.dnd-page.class-paladin .dnd-section-title::after { background: linear-gradient(to right, #c9a820, transparent); }
+.dnd-page.class-paladin .dnd-border { border-color: rgba(201,168,32,0.2); }
+
+.dnd-page.class-ranger .dnd-header-title { color: #3a5a2c; }
+.dnd-page.class-ranger .dnd-section-title { color: #2a4a1c; }
+.dnd-page.class-ranger .dnd-section-title::after { background: linear-gradient(to right, #3a5a2c, transparent); }
+
+.dnd-page.class-rogue .dnd-header-title { color: #3a2a4a; }
+.dnd-page.class-rogue .dnd-section-title { color: #2a1a3a; }
+.dnd-page.class-rogue .dnd-section-title::after { background: linear-gradient(to right, #3a2a4a, transparent); }
+
+.dnd-page.class-sorcerer .dnd-header-title { color: #c04020; }
+.dnd-page.class-sorcerer .dnd-section-title { color: #a03010; }
+.dnd-page.class-sorcerer .dnd-section-title::after { background: linear-gradient(to right, #c04020, transparent); }
+.dnd-page.class-sorcerer .dnd-border { border-color: rgba(192,64,32,0.2); }
+
+.dnd-page.class-warlock .dnd-header-title { color: #4a0e4e; }
+.dnd-page.class-warlock .dnd-section-title { color: #3a0a3e; }
+.dnd-page.class-warlock .dnd-section-title::after { background: linear-gradient(to right, #4a0e4e, transparent); }
+.dnd-page.class-warlock .dnd-border { border-color: rgba(74,14,78,0.2); }
+
+.dnd-page.class-wizard .dnd-header-title { color: #1a3a8a; }
+.dnd-page.class-wizard .dnd-section-title { color: #0a2a6a; }
+.dnd-page.class-wizard .dnd-section-title::after { background: linear-gradient(to right, #1a3a8a, transparent); }
+.dnd-page.class-wizard .dnd-border { border-color: rgba(26,58,138,0.2); }
