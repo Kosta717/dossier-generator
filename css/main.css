@@ -382,3 +382,54 @@ body {
     object-fit: contain;
     filter: brightness(1.5) contrast(1.2); /* Make pen ink visible against dark theme in preview */
 }
+/* ===== PRINT SETTINGS (Сохранение всех фильтров и эффектов) ===== */
+@media print {
+    /* 1. Прячем все элементы интерфейса, кроме самих страниц досье */
+    #selector-screen,
+    .editor-toolbar,
+    .editor-sidebar,
+    .loading-overlay,
+    .toast,
+    #signature-modal,
+    .modal-overlay {
+        display: none !important;
+    }
+
+    /* 2. Сбрасываем ограничения контейнеров для печати */
+    body, 
+    #editor-screen, 
+    .editor-layout, 
+    .editor-preview,
+    .preview-container {
+        background: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+        display: block !important;
+        overflow: visible !important;
+        transform: none !important; /* Важно: отключаем масштабирование предпросмотра */
+    }
+
+    /* 3. Настраиваем саму A4 страницу */
+    .a4-page {
+        margin: 0 !important;
+        box-shadow: none !important; /* Тени на печати не нужны */
+        border: none !important;
+        page-break-after: always; /* Каждая страница — с нового листа */
+        page-break-inside: avoid;
+        width: 210mm !important;
+        height: 297mm !important;
+        display: block !important;
+        position: relative !important;
+        /* Гарантируем, что браузер напечатает фоновые изображения и цвета */
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* 4. Системные настройки листа */
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+}
