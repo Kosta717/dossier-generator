@@ -284,6 +284,7 @@
     border-bottom: 2px solid #1e1e1e;
     width: 180px;
     margin: 10px 0 5px;
+    position: relative;
 }
 
 .reich-page .rundstempel {
@@ -338,4 +339,38 @@
     background-color: #8b7355;
     border-radius: 0 5px 5px 0;
     box-shadow: inset -2px 0 2px rgba(0,0,0,0.3);
+}
+
+/* Signature image inside .linie */
+.reich-page .sig-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: 55px;
+    object-fit: contain;
+    opacity: 0.8;
+    filter: contrast(1.5) brightness(0.4);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* Outcome stamp — diagonal Fraktur-style stamp */
+.reich-outcome-stamp {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    font-family: 'UnifrakturMaguntia', 'Old Standard TT', serif;
+    font-weight: 900;
+    font-size: 58px;
+    opacity: 0.16;
+    border: 6px solid currentColor;
+    border-radius: 3px;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+    letter-spacing: 5px;
 }

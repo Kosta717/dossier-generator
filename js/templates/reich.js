@@ -8,12 +8,41 @@ const ReichTemplate = {
     getFields() {
         return [
             { section: 'Личные данные', fields: [
-                { id: 'rank', label: 'Звание / Должность', type: 'text', placeholder: 'Штурмбаннфюрер СС · Руководитель...' },
+                { id: 'rank', label: 'Звание / Должность', type: 'select', options: [
+                    'Schütze (Солдат)', 'Obergefreiter (Оберефрейтор)', 'Unteroffizier (Унтер-офицер)',
+                    'Feldwebel (Фельдфебель)', 'Oberfeldwebel (Обер-фельдфебель)',
+                    'Leutnant (Лейтенант)', 'Oberleutnant (Обер-лейтенант)',
+                    'Hauptmann (Гауптман)', 'Major (Майор)', 'Oberstleutnant (Оберст-лейтенант)',
+                    'Oberst (Оберст)', 'Generalmajor (Генерал-майор)', 'General (Генерал)',
+                    'SS-Mann (СС-Манн)', 'SS-Sturmmann', 'SS-Unterscharführer',
+                    'SS-Scharführer', 'SS-Oberscharführer', 'SS-Hauptscharführer',
+                    'SS-Untersturmführer', 'SS-Obersturmführer', 'SS-Hauptsturmführer',
+                    'SS-Sturmbannführer', 'SS-Obersturmbannführer', 'SS-Standartenführer',
+                    'SS-Brigadeführer', 'SS-Gruppenführer', 'SS-Obergruppenführer'
+                ]},
+                { id: 'rankCustom', label: 'Звание (вручную)', type: 'text', placeholder: 'Штурмбаннфюрер СС · Руководитель...' },
                 { id: 'name', label: 'Фамилия, Имя', type: 'text', placeholder: 'КАЙЗЕР, КЛЕМЕНС (KAISER, CLEMENS)' },
                 { id: 'birthInfo', label: 'Дата и место рождения', type: 'text', placeholder: '12 июня 1915 (32 года) · Берлин' },
                 { id: 'citizenship', label: 'Гражданство', type: 'text', placeholder: 'Германский рейх · Арийское происхождение' },
+                { id: 'religion', label: 'Вероисповедание', type: 'select', options: [
+                    'Evangelisch (Евангелическое)', 'Katholisch (Католическое)', 'Gottgläubig (Богопочитатель / без конфессии)', 'Ohne Bekenntnis (Без вероисповедания)'
+                ]},
+                { id: 'prewarOccupation', label: 'Профессия до службы', type: 'text', placeholder: 'Kriminalbeamter (Криминальный инспектор)' },
                 { id: 'personalNumber', label: 'Личный номер / Группа крови', type: 'text', placeholder: 'SS-№ 312 774 · Группа крови A (II)' },
+                { id: 'feldpostNumber', label: 'Номер полевой почты (Feldpost)', type: 'text', placeholder: 'Feldpost-Nr. L-27154' },
+                { id: 'dossierDate', label: 'Дата составления дела', type: 'text', placeholder: '12. Januar 1944' },
                 { id: 'photo', label: 'Фотография', type: 'photo' }
+            ]},
+            { section: 'Расовые данные и происхождение', fields: [
+                { id: 'aryanProof', label: 'Свидетельство арийского происхождения', type: 'select', options: [
+                    'Подтверждено (Ahnennachweis)', 'Большой арийский паспорт (Großer Ariernachweis)', 'На проверке', 'Nicht nachgewiesen (Не подтверждено)'
+                ]},
+                { id: 'racialNote', label: 'Расово-политическая заметка', type: 'text', placeholder: 'Nordisch. Ohne Makel. (Нордический. Без изъянов.)' },
+                { id: 'maritalStatus', label: 'Семейное положение', type: 'text', placeholder: 'Холост' },
+                { id: 'address', label: 'Место жительства', type: 'text', placeholder: 'Берлин-Целендорф, Фиштальштрассе 7' },
+                { id: 'father', label: 'Отец', type: 'text', placeholder: 'Генрих Кайзер († 1938)' },
+                { id: 'mother', label: 'Мать', type: 'text', placeholder: 'Маргарете Кайзер' },
+                { id: 'siblings', label: 'Братья / сёстры', type: 'text', placeholder: 'Нет' },
             ]},
             { section: 'Внешние приметы', fields: [
                 { id: 'build', label: 'Рост / Телосложение', type: 'text', placeholder: '179 см · Атлетическое' },
@@ -21,17 +50,10 @@ const ReichTemplate = {
                 { id: 'eyes', label: 'Глаза', type: 'text', placeholder: 'Серо-голубые' },
                 { id: 'marks', label: 'Особые приметы', type: 'textarea', placeholder: 'Шрамов нет. Татуировка группы крови...' },
             ]},
-            { section: 'Семья и происхождение', fields: [
-                { id: 'maritalStatus', label: 'Семейное положение', type: 'text', placeholder: 'Холост' },
-                { id: 'address', label: 'Место жительства', type: 'text', placeholder: 'Берлин-Целендорф, Фиштальштрассе 7' },
-                { id: 'father', label: 'Отец', type: 'text', placeholder: 'Генрих Кайзер († 1938)' },
-                { id: 'mother', label: 'Мать', type: 'text', placeholder: 'Маргарете Кайзер' },
-                { id: 'siblings', label: 'Братья / сёстры', type: 'text', placeholder: 'Нет' },
-            ]},
             { section: 'Служебный путь (Таблицы)', fields: [
                 { id: 'politicalRecord', label: 'Политическое становление (Период - Событие)', type: 'textarea', placeholder: '1933 - Вступление в НСДАП\n1934 - Вступление в СС\nРазделяйте период и событие дефисом или тире' },
                 { id: 'militaryRecord', label: 'Военная служба (Период - Должность)', type: 'textarea', placeholder: '1939–1941 - Командир взвода\n1941–1943 - Командир роты' },
-                { id: 'specialService', label: 'Специальная служба / Командировки', type: 'textarea', placeholder: '25.01.1947 - Включён в следственную группу' },
+                { id: 'specialService', label: 'Специальная служба / Командировки', type: 'textarea', placeholder: '25.01.1944 - Включён в следственную группу' },
             ]},
             { section: 'Образование и навыки', fields: [
                 { id: 'education', label: 'Образование', type: 'textarea', placeholder: 'Юнкерское училище СС (с отличием)' },
@@ -40,14 +62,41 @@ const ReichTemplate = {
                 { id: 'training', label: 'Военная подготовка', type: 'textarea', placeholder: 'Тактика пехоты...' },
                 { id: 'otherSkills', label: 'Прочее', type: 'textarea', placeholder: 'Опыт управления лагерем...' },
             ]},
+            { section: 'Физическая пригодность', fields: [
+                { id: 'fitnessCategory', label: 'Категория годности', type: 'select', options: [
+                    'KV — Kriegsverwendungsfähig (Полностью годен)',
+                    'GV — Garnisonsverwendungsfähig (Годен для гарнизона)',
+                    'av — arbeitsverwendungsfähig (Годен к нестроевой службе)',
+                    'uk — unabkömmlich (Незаменимый специалист)',
+                    'wv — wehrwürdig (Достоин военной службы)',
+                    'av H — Не годен к строевой',
+                    'Abgelehnt (Не годен)'
+                ]},
+                { id: 'fitnessNotes', label: 'Примечания по здоровью', type: 'textarea', placeholder: 'Осколочное ранение правой руки, 1942. Зажило без последствий.' },
+            ]},
             { section: 'Награды', fields: [
-                { id: 'awards', label: 'Награды (каждая с новой строки)', type: 'textarea', placeholder: 'Железный крест 2-го класса\nЖелезный крест 1-го класса...' },
+                { id: 'awards', label: 'Награды (каждая с новой строки)', type: 'textarea', placeholder: 'Eisernes Kreuz 2. Klasse (Железный крест 2-го класса)\nEisernes Kreuz 1. Klasse\nOstmedaille (Медаль «За зимнюю кампанию»)' },
             ]},
             { section: 'Оценка', fields: [
                 { id: 'discipline', label: 'Дисциплина', type: 'text', placeholder: 'Взысканий нет' },
-                { id: 'fitness', label: 'Годность', type: 'text', placeholder: 'Полностью годен к службе' },
+                { id: 'fitness', label: 'Служебная годность', type: 'text', placeholder: 'Полностью годен к службе' },
                 { id: 'notes', label: 'Особые отметки', type: 'textarea', placeholder: 'Проявил настойчивость...' },
                 { id: 'finalVerdict', label: 'Итоговое заключение', type: 'textarea', placeholder: 'Пригоден к руководству. Возражений не имеется.' },
+                { id: 'commanderSignature', label: 'Подпись начальника отдела кадров', type: 'signature' },
+            ]},
+            { section: 'Исход / Статус', fields: [
+                { id: 'outcome', label: 'Статус / Исход дела', type: 'select', options: [
+                    '— (активен)',
+                    'Gefallen (Погиб в бою)',
+                    'Vermisst (Пропал без вести)',
+                    'Verwundet (Ранен)',
+                    'Gestorben an Wunden (Умер от ран)',
+                    'Kriegsgefangen (Попал в плен)',
+                    'Desertiert (Дезертировал)',
+                    'Entlassen (Демобилизован)',
+                    'Verhaftet (Арестован)',
+                ]},
+                { id: 'outcomeDate', label: 'Дата исхода', type: 'text', placeholder: '17. August 1943' },
             ]},
             { section: 'Оформление (Эффекты)', fields: [
                 { id: 'stampSecret', label: 'Гриф «КОНФИДЕНЦИАЛЬНО»', type: 'checkbox' },
@@ -89,13 +138,33 @@ const ReichTemplate = {
         return text.split('\n').filter(l => l.trim()).map(line => `<p>${line.trim()}</p>`).join('');
     },
 
+    _getOutcomeStamp(outcome) {
+        if (!outcome || outcome === '— (активен)') return '';
+        const map = {
+            'Gefallen (Погиб в бою)':            { text: 'GEFALLEN', color: '#7a0000' },
+            'Vermisst (Пропал без вести)':        { text: 'VERMISST', color: '#5a4a00' },
+            'Verwundet (Ранен)':                  { text: 'VERWUNDET', color: '#7a3000' },
+            'Gestorben an Wunden (Умер от ран)':  { text: 'GESTORBEN', color: '#7a0000' },
+            'Kriegsgefangen (Попал в плен)':      { text: 'KRIEGSGEF.', color: '#4a3a00' },
+            'Desertiert (Дезертировал)':           { text: 'DESERTIERT', color: '#500000' },
+            'Entlassen (Демобилизован)':          { text: 'ENTLASSEN', color: '#1a3a1a' },
+            'Verhaftet (Арестован)':              { text: 'VERHAFTET', color: '#300050' },
+        };
+        const s = map[outcome] || { text: outcome.toUpperCase(), color: '#7a0000' };
+        return `<div class="reich-outcome-stamp" style="border-color:${s.color};color:${s.color};">${s.text}</div>`;
+    },
+
     renderPreview(data) {
+        const rank = data.rankCustom || data.rank || '';
+        const outcomeStamp = this._getOutcomeStamp(data.outcome);
+
         const page1 = `
             <div class="a4-page reich-page ${data.paperWear ? 'effect-wear' : ''}">
                 <div class="klammer-deco"></div>
                 <div class="klammer-deco-2"></div>
                 <div class="watermark">⚡⚡</div>
                 ${data.coffeeStain ? '<div class="effect-dirt"></div>' : ''}
+                ${outcomeStamp}
             
                 <div class="header-polizei">
                     <div class="behoerde">
@@ -104,7 +173,7 @@ const ReichTemplate = {
                     </div>
                     <div class="stempel-ecke">
                         ВХ. № ${Math.floor(Math.random()*9000)+1000}/47<br>
-                        ${new Date().toLocaleDateString('ru-RU')}
+                        ${data.dossierDate || new Date().toLocaleDateString('ru-RU')}
                     </div>
                 </div>
             
@@ -115,6 +184,7 @@ const ReichTemplate = {
             
                 <div class="aktenzeichen">
                     <span>РЕГ. № ${Math.floor(Math.random()*900)+100}-A · ЛИЧНАЯ УЧЁТНАЯ КАРТОЧКА</span>
+                    ${data.feldpostNumber ? `<span>Feldpost: ${data.feldpostNumber}</span>` : ''}
                 </div>
             
                 <div class="foto-row">
@@ -129,10 +199,12 @@ const ReichTemplate = {
                         </div>
                     </div>
                     <div class="personalien">
-                        <div class="personal-row"><span class="personal-label">Звание</span><span class="personal-value">${data.rank || ''}</span></div>
+                        <div class="personal-row"><span class="personal-label">Звание</span><span class="personal-value">${rank}</span></div>
                         <div class="personal-row"><span class="personal-label">Фамилия, имя</span><span class="personal-value"><strong>${data.name || ''}</strong></span></div>
                         <div class="personal-row"><span class="personal-label">Родился / место</span><span class="personal-value">${data.birthInfo || ''}</span></div>
                         <div class="personal-row"><span class="personal-label">Гражданство</span><span class="personal-value">${data.citizenship || ''}</span></div>
+                        <div class="personal-row"><span class="personal-label">Вероисповедание</span><span class="personal-value">${data.religion || ''}</span></div>
+                        <div class="personal-row"><span class="personal-label">Профессия</span><span class="personal-value">${data.prewarOccupation || ''}</span></div>
                         <div class="personal-row"><span class="personal-label">Личный номер</span><span class="personal-value">${data.personalNumber || ''}</span></div>
                     </div>
                 </div>
@@ -152,6 +224,8 @@ const ReichTemplate = {
                     <div class="label">Отец</div><div class="value">${data.father || ''}</div>
                     <div class="label">Мать</div><div class="value">${data.mother || ''}</div>
                     <div class="label">Братья / сёстры</div><div class="value">${data.siblings || ''}</div>
+                    <div class="label">Арийское происх.</div><div class="value">${data.aryanProof || ''}</div>
+                    <div class="label">Расовая заметка</div><div class="value">${data.racialNote || ''}</div>
                 </div>
 
                 <div class="section-head">Politischer Werdegang</div>
@@ -180,6 +254,12 @@ const ReichTemplate = {
                     <div class="label">Военная подготовка</div><div class="value">${data.training || ''}</div>
                     <div class="label">Прочее</div><div class="value">${data.otherSkills || ''}</div>
                 </div>
+
+                <div class="section-head">Körperliche Eignung (Tauglichkeit)</div>
+                <div class="grid-daten">
+                    <div class="label">Категория годности</div><div class="value"><strong>${data.fitnessCategory || ''}</strong></div>
+                    <div class="label">Примечания здоровье</div><div class="value">${data.fitnessNotes || '—'}</div>
+                </div>
             
                 <div class="section-head">Sonderbereich / Dienst</div>
                 <table class="dienst-tabelle">
@@ -203,17 +283,27 @@ const ReichTemplate = {
             <div class="a4-page reich-page ${data.paperWear ? 'effect-wear' : ''}">
                 <div class="klammer-deco"></div>
                 <div class="klammer-deco-2"></div>
+                ${outcomeStamp}
                 <div class="section-head" style="margin-top:0;">Abschließende Beurteilung</div>
                 <div class="aktueller-einsatz">
                     ${this._renderParagraphs(data.finalVerdict)}
                 </div>
             
+                ${data.outcome && data.outcome !== '— (активен)' ? `
+                <div class="section-head">Ausgang / Status</div>
+                <div class="grid-daten">
+                    <div class="label">Статус</div><div class="value"><strong>${data.outcome}</strong></div>
+                    <div class="label">Дата</div><div class="value">${data.outcomeDate || '—'}</div>
+                </div>` : ''}
+
                 <div class="unterschrift-bereich">
                     <div class="signatur-links">
                         <span>С подлинным верно</span>
-                        <div class="linie"></div>
+                        <div class="linie">
+                            ${data.commanderSignature ? `<img src="${data.commanderSignature}" class="sig-image" alt="Подпись">` : ''}
+                        </div>
                         <span>Начальник отдела кадров</span>
-                        <div style="margin-top:16px;">Берлин, ${new Date().toLocaleDateString('ru-RU')}</div>
+                        <div style="margin-top:16px;">Берлин, ${data.dossierDate || new Date().toLocaleDateString('ru-RU')}</div>
                     </div>
                     <div class="rundstempel">
                         <div>СПЕЦКОМИС.<br>ОТДЕЛ V<br>✶</div>

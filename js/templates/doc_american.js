@@ -1,87 +1,70 @@
-// American Soldier Dossier Template (DA Form 20 style)
-const AmericanTemplate = {
-    id: 'american',
-    name: 'Личное дело',
-    description: 'DA Form 20 — Personnel Record. Оливковый стиль US Army, формализованные блоки.',
-    icon: '🎖️',
+// American Medical Officer Dossier Template (DA Form 66 style)
+const DocAmericanTemplate = {
+    id: 'doc_american',
+    name: 'Medical Officer Record',
+    description: 'Medical Officer Personnel Record. Личное дело медицинского офицера US Army.',
+    icon: '🏥',
     
     getFields() {
         return [
             { section: 'Personnel Data', fields: [
-                { id: 'lastName', label: 'Last Name', type: 'text', placeholder: 'SMITH' },
-                { id: 'firstName', label: 'First Name & MI', type: 'text', placeholder: 'JOHN A.' },
-                { id: 'serialNumber', label: 'Army Serial Number', type: 'text', placeholder: '32 145 678' },
+                { id: 'lastName', label: 'Last Name', type: 'text', placeholder: 'GRUBER' },
+                { id: 'firstName', label: 'First Name & MI', type: 'text', placeholder: 'WILLIAM R.' },
+                { id: 'serialNumber', label: 'Army Serial Number', type: 'text', placeholder: '0-412 876' },
                 { id: 'rank', label: 'Grade / Rank', type: 'select', options: [
-                    'PVT — Private', 'PFC — Private First Class', 'CPL — Corporal',
-                    'SGT — Sergeant', 'S/SGT — Staff Sergeant', 'T/SGT — Technical Sergeant',
-                    'M/SGT — Master Sergeant', '1st SGT — First Sergeant', 'SGM — Sergeant Major',
-                    '2LT — Second Lieutenant', '1LT — First Lieutenant', 'CPT — Captain',
-                    'MAJ — Major', 'LTC — Lieutenant Colonel', 'COL — Colonel',
-                    'BG — Brigadier General', 'MG — Major General', 'LTG — Lieutenant General', 'GEN — General'
+                    '2LT MC — Second Lieutenant, Medical Corps',
+                    '1LT MC — First Lieutenant, Medical Corps',
+                    'CPT MC — Captain, Medical Corps',
+                    'MAJ MC — Major, Medical Corps',
+                    'LTC MC — Lieutenant Colonel, Medical Corps',
+                    'COL MC — Colonel, Medical Corps'
                 ]},
-                { id: 'rankCustom', label: 'Rank (manual)', type: 'text', placeholder: 'T/5 — Technician Fifth Grade' },
-                { id: 'branch', label: 'Arm or Service', type: 'select', options: [
-                    'INFANTRY', 'ARMOR', 'CAVALRY', 'FIELD ARTILLERY', 'COAST ARTILLERY',
-                    'CORPS OF ENGINEERS', 'SIGNAL CORPS', 'QUARTERMASTER CORPS',
-                    'ORDNANCE DEPARTMENT', 'MEDICAL DEPARTMENT', 'MILITARY POLICE',
-                    'ARMY AIR FORCES', 'AIRBORNE', 'RANGER', 'OSS'
-                ]},
-                { id: 'branchCustom', label: 'Arm or Service (manual)', type: 'text', placeholder: 'SPECIAL FORCES' },
-                { id: 'mos', label: 'MOS — Military Occupational Specialty', type: 'text', placeholder: '745 — Infantryman' },
-                { id: 'dob', label: 'Date of Birth', type: 'text', placeholder: '14 MAY 1920' },
-                { id: 'pob', label: 'Place of Birth', type: 'text', placeholder: 'CHICAGO, IL' },
-                { id: 'dossierDate', label: 'Date of Record', type: 'text', placeholder: '06 JUN 1944' },
+                { id: 'rankCustom', label: 'Rank (manual)', type: 'text', placeholder: 'BG MC — Brigadier General, Medical Corps' },
+                { id: 'dob', label: 'Date of Birth', type: 'text', placeholder: '22 MAR 1908' },
+                { id: 'pob', label: 'Place of Birth', type: 'text', placeholder: 'BOSTON, MA' },
+                { id: 'dossierDate', label: 'Date of Record', type: 'text', placeholder: '15 JAN 1944' },
                 { id: 'photo', label: 'Photograph', type: 'photo' }
             ]},
             { section: 'Physical Profile', fields: [
-                { id: 'height', label: 'Height', type: 'text', placeholder: '5\'10"' },
-                { id: 'weight', label: 'Weight', type: 'text', placeholder: '165 lbs' },
-                { id: 'eyes', label: 'Eyes', type: 'text', placeholder: 'BROWN' },
-                { id: 'hair', label: 'Hair', type: 'text', placeholder: 'BLACK' },
-                { id: 'blood', label: 'Blood Type', type: 'text', placeholder: 'O POSITIVE' },
-                { id: 'complexion', label: 'Complexion', type: 'select', options: [
-                    'FAIR', 'MEDIUM', 'DARK', 'RUDDY', 'SALLOW', 'FRECKLED'
-                ]},
-                { id: 'race', label: 'Race (as per historical form)', type: 'select', options: [
-                    'WHITE', 'NEGRO', 'PUERTO RICAN', 'FILIPINO', 'CHINESE', 'JAPANESE', 'NATIVE AMERICAN', 'OTHER'
-                ]},
+                { id: 'height', label: 'Height', type: 'text', placeholder: '5\'11"' },
+                { id: 'weight', label: 'Weight', type: 'text', placeholder: '175 lbs' },
+                { id: 'eyes', label: 'Eyes', type: 'text', placeholder: 'BLUE' },
+                { id: 'hair', label: 'Hair', type: 'text', placeholder: 'BROWN' },
+                { id: 'blood', label: 'Blood Type', type: 'text', placeholder: 'A POSITIVE' },
             ]},
-            { section: 'Background', fields: [
-                { id: 'education', label: 'Education Level / AGCT Score', type: 'text', placeholder: 'HIGH SCHOOL GRAD · AGCT: 115' },
-                { id: 'civilianOccupation', label: 'Civilian Occupation', type: 'text', placeholder: 'MACHINIST · FORD MOTOR CO., DETROIT' },
-                { id: 'selectiveServiceNo', label: 'Selective Service No.', type: 'text', placeholder: '2-A-104-5678' },
-                { id: 'homeAddress', label: 'Home Address', type: 'text', placeholder: '1421 MAPLE ST, CHICAGO, IL 60601' },
-                { id: 'nextOfKin', label: 'Next of Kin (Name, Relation, Address)', type: 'textarea', placeholder: 'Mary J. Smith (wife)\n1421 Maple St, Chicago, IL 60601\nTel: NA' },
-            ]},
-            { section: 'Military History (Tables)', fields: [
-                { id: 'theater', label: 'Theater of Operations', type: 'select', options: [
-                    'CONUS — Continental United States',
-                    'ETO — European Theater of Operations',
-                    'PTO — Pacific Theater of Operations',
-                    'MTO — Mediterranean Theater of Operations',
-                    'CBI — China-Burma-India Theater',
-                    'SWPA — Southwest Pacific Area',
+            { section: 'Medical Qualifications', fields: [
+                { id: 'medSpecialty', label: 'Medical Specialty', type: 'select', options: [
+                    'GENERAL SURGERY', 'INTERNAL MEDICINE', 'ORTHOPEDIC SURGERY',
+                    'NEUROSURGERY', 'PSYCHIATRY', 'ANESTHESIOLOGY',
+                    'PREVENTIVE MEDICINE', 'OPHTHALMOLOGY', 'DENTAL'
                 ]},
-                { id: 'assignments', label: 'Record of Assignments (Date - Org)', type: 'textarea', placeholder: '12 OCT 43 - 101st Airborne Div\n05 JUN 44 - 506th PIR' },
-                { id: 'campaigns', label: 'Campaign Participation Credits', type: 'textarea', placeholder: 'NORMANDY · RHINELAND · ARDENNES-ALSACE · CENTRAL EUROPE' },
-                { id: 'qualifications', label: 'Military Qualifications / Badges', type: 'textarea', placeholder: 'EXPERT INFANTRYMAN BADGE\nPARACHUTIST BADGE\nCOMBAT INFANTRYMAN BADGE' },
+                { id: 'medSchool', label: 'Medical School / Year', type: 'text', placeholder: 'JOHNS HOPKINS UNIV. SCHOOL OF MEDICINE, 1934' },
+                { id: 'medLicense', label: 'Medical License / State', type: 'text', placeholder: 'MARYLAND STATE MEDICAL LICENSE, 1934' },
+                { id: 'boardCertification', label: 'Board Certification', type: 'text', placeholder: 'AMERICAN BOARD OF SURGERY, 1937' },
+            ]},
+            { section: 'Hospital Assignments', fields: [
+                { id: 'hospitalAssignments', label: 'Hospital / Unit Assignments (Date - Assignment)', type: 'textarea', placeholder: '12 DEC 42 - 2nd Field Hospital, Surgeon\n05 JUL 43 - 56th Evacuation Hospital, Chief of Surgery\n22 JAN 44 - 3rd General Hospital, Chief Surgical Service' },
+                { id: 'surgicalLog', label: 'Surgical Log / Statistics', type: 'textarea', placeholder: 'Total Procedures: 890\nMajor Operations: 412\nBattle Casualty Surgery: 267\nMortality Rate: 3.8%' },
+            ]},
+            { section: 'Research & Publications', fields: [
+                { id: 'researchPublications', label: 'Research Publications', type: 'textarea', placeholder: '"Wound Debridement in Forward Areas" — J. Military Medicine, 1943\n"Penicillin Application in Battle Wounds" — US Army Medical Bulletin, 1944' },
             ]},
             { section: 'Decorations & Awards', fields: [
                 { id: 'silverStar', label: 'Silver Star', type: 'checkbox' },
                 { id: 'bronzeStar', label: 'Bronze Star', type: 'checkbox' },
+                { id: 'legionOfMerit', label: 'Legion of Merit', type: 'checkbox' },
                 { id: 'purpleHeart', label: 'Purple Heart', type: 'checkbox' },
-                { id: 'airMedal', label: 'Air Medal', type: 'checkbox' },
-                { id: 'goodConduct', label: 'Good Conduct Medal', type: 'checkbox' },
+                { id: 'armyCommendation', label: 'Army Commendation Medal', type: 'checkbox' },
                 { id: 'euroAfricaMidEast', label: 'EAME Campaign Medal', type: 'checkbox' },
                 { id: 'asiaticPacific', label: 'Asiatic-Pacific Campaign Medal', type: 'checkbox' },
-                { id: 'awardsOther', label: 'Other Decorations', type: 'textarea', placeholder: 'Distinguished Service Cross (DSC)\nPresidential Unit Citation' },
+                { id: 'awardsOther', label: 'Other Decorations', type: 'textarea', placeholder: 'Meritorious Service Medal\nPresidential Unit Citation' },
             ]},
             { section: 'Remarks & Security', fields: [
                 { id: 'security', label: 'Security Clearance', type: 'select', options: [
                     'RESTRICTED', 'CONFIDENTIAL', 'SECRET', 'TOP SECRET', 'NONE'
                 ]},
-                { id: 'remarks', label: 'Remarks / Disciplinary Action', type: 'textarea', placeholder: 'AWOL 12 MAY 44 to 14 MAY 44. Reduced in rank.' },
-                { id: 'commanderSignature', label: 'Signature of Personnel Officer', type: 'signature' },
+                { id: 'remarks', label: 'Remarks / Special Notes', type: 'textarea', placeholder: 'Fluent in French and German. Recommended for promotion to LTC MC.' },
+                { id: 'commanderSignature', label: 'Signature of Medical Inspector', type: 'signature' },
             ]},
             { section: 'Outcome / Status', fields: [
                 { id: 'outcome', label: 'Casualty / Separation Status', type: 'select', options: [
@@ -91,17 +74,16 @@ const AmericanTemplate = {
                     'POW — Prisoner of War',
                     'WIA — Wounded in Action',
                     'DOW — Died of Wounds',
-                    'AWOL — Absent Without Leave',
                     'HONORABLY DISCHARGED',
                     'MEDICALLY DISCHARGED',
-                    'COURT-MARTIALED',
+                    'TRANSFERRED',
                 ]},
-                { id: 'outcomeDate', label: 'Date of Casualty / Separation', type: 'text', placeholder: '17 AUG 1944' },
+                { id: 'outcomeDate', label: 'Date of Casualty / Separation', type: 'text', placeholder: '08 MAY 1945' },
             ]},
             { section: 'Оформление (Эффекты)', fields: [
                 { id: 'stampSecret', label: 'Печать статуса секретности', type: 'checkbox' },
                 { id: 'paperWear', label: 'Потертости бумаги', type: 'checkbox' },
-                { id: 'coffeeStain', label: 'Следы от кофе', type: 'checkbox' }
+                { id: 'coffeeStain', label: 'Следы от кофе', type: 'checkbox' },
             ]},
             { section: 'Дополнительно', fields: [
                 { id: 'extraNotes', label: 'Appendices / Extra Notes', type: 'textarea', placeholder: 'Any overflow information...' }
@@ -133,9 +115,9 @@ const AmericanTemplate = {
         const medals = [
             { key: 'silverStar',       name: 'Silver Star' },
             { key: 'bronzeStar',       name: 'Bronze Star Medal' },
+            { key: 'legionOfMerit',    name: 'Legion of Merit' },
             { key: 'purpleHeart',      name: 'Purple Heart' },
-            { key: 'airMedal',         name: 'Air Medal' },
-            { key: 'goodConduct',      name: 'Good Conduct Medal' },
+            { key: 'armyCommendation', name: 'Army Commendation Medal' },
             { key: 'euroAfricaMidEast',name: 'EAME Campaign Medal' },
             { key: 'asiaticPacific',   name: 'Asiatic-Pacific Campaign Medal' },
         ];
@@ -156,10 +138,9 @@ const AmericanTemplate = {
             'POW — Prisoner of War':     { text: 'P.O.W.', color: '#4a3a00' },
             'WIA — Wounded in Action':   { text: 'W.I.A.', color: '#7a3000' },
             'DOW — Died of Wounds':      { text: 'D.O.W.', color: '#7a0000' },
-            'AWOL — Absent Without Leave':{ text: 'A.W.O.L.', color: '#500000' },
             'HONORABLY DISCHARGED':      { text: 'HON. DISC.', color: '#1a3a1a' },
             'MEDICALLY DISCHARGED':      { text: 'MED. DISC.', color: '#1a2a4a' },
-            'COURT-MARTIALED':           { text: 'CT-MARTIAL', color: '#400000' },
+            'TRANSFERRED':               { text: 'TRANSFER', color: '#2a3a4a' },
         };
         const s = map[outcome] || { text: outcome.toUpperCase(), color: '#7a0000' };
         return `<div class="american-outcome-stamp" style="border-color:${s.color};color:${s.color};">${s.text}</div>`;
@@ -167,7 +148,6 @@ const AmericanTemplate = {
 
     renderPreview(data) {
         const rank = data.rankCustom || data.rank || '';
-        const branch = data.branchCustom || data.branch || '';
         const outcomeStamp = this._getOutcomeStamp(data.outcome);
 
         const page1 = `
@@ -177,16 +157,15 @@ const AmericanTemplate = {
                 ${outcomeStamp}
                 
                 <div class="am-header">
-                    <span class="am-form-title">DA FORM 20 - ENLISTED PERSONNEL RECORD</span>
-                    <span>WAR DEPARTMENT · ${data.dossierDate || new Date().toLocaleDateString('en-US')}</span>
+                    <span class="am-form-title">DA FORM 66 — MEDICAL OFFICER RECORD</span>
+                    <span>WAR DEPARTMENT · THE SURGEON GENERAL · ${data.dossierDate || new Date().toLocaleDateString('en-US')}</span>
                 </div>
                 
                 <div style="display:flex;">
                     <div style="flex:1;">
-                        <!-- Block 1-4 -->
                         <div class="am-grid-row" style="border-top:1px solid #000;">
                             <div class="am-box am-w-half">
-                                <span class="am-label">1. LAST NAME - FIRST NAME - MIDDLE INITIAL</span>
+                                <span class="am-label">1. LAST NAME — FIRST NAME — MI</span>
                                 <span class="am-value">${data.lastName || ''} ${data.firstName || ''}</span>
                             </div>
                             <div class="am-box am-w-quart">
@@ -202,11 +181,11 @@ const AmericanTemplate = {
                         <div class="am-grid-row">
                             <div class="am-box am-w-quart">
                                 <span class="am-label">4. ARM OR SERVICE</span>
-                                <span class="am-value">${branch}</span>
+                                <span class="am-value">MEDICAL CORPS</span>
                             </div>
                             <div class="am-box am-w-quart">
-                                <span class="am-label">4a. MOS</span>
-                                <span class="am-value">${data.mos || ''}</span>
+                                <span class="am-label">4a. SPECIALTY</span>
+                                <span class="am-value" style="font-size:9px;">${data.medSpecialty || ''}</span>
                             </div>
                             <div class="am-box am-w-quart">
                                 <span class="am-label">5. DATE OF BIRTH</span>
@@ -227,31 +206,7 @@ const AmericanTemplate = {
                                     <span>EYES: <strong>${data.eyes || ''}</strong></span>
                                     <span>HAIR: <strong>${data.hair || ''}</strong></span>
                                     <span>BLOOD: <strong>${data.blood || ''}</strong></span>
-                                    <span>CMPLX: <strong>${data.complexion || ''}</strong></span>
-                                    <span>RACE: <strong>${data.race || ''}</strong></span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="am-grid-row">
-                            <div class="am-box am-w-half">
-                                <span class="am-label">7a. EDUCATION / AGCT</span>
-                                <span class="am-value" style="font-size:10px;">${data.education || ''}</span>
-                            </div>
-                            <div class="am-box am-w-half">
-                                <span class="am-label">7b. CIVILIAN OCCUPATION</span>
-                                <span class="am-value" style="font-size:10px;">${data.civilianOccupation || ''}</span>
-                            </div>
-                        </div>
-
-                        <div class="am-grid-row">
-                            <div class="am-box am-w-third">
-                                <span class="am-label">7c. SELECTIVE SERVICE NO.</span>
-                                <span class="am-value" style="font-size:10px;">${data.selectiveServiceNo || ''}</span>
-                            </div>
-                            <div class="am-box am-w-auto">
-                                <span class="am-label">7d. HOME ADDRESS</span>
-                                <span class="am-value" style="font-size:10px;">${data.homeAddress || ''}</span>
                             </div>
                         </div>
                     </div>
@@ -259,39 +214,46 @@ const AmericanTemplate = {
                         ${data.photo ? `<img src="${data.photo}" alt="Photograph" class="${data.photo_filter || ''}">` : '<span style="font-size:8px;font-family:\'Inter\';">PHOTOGRAPH</span>'}
                     </div>
                 </div>
-                
+
                 <div class="am-grid-row" style="border-top:1px solid #000; margin-top:5px;">
-                    <div class="am-box am-w-auto">
-                        <span class="am-label">8. NEXT OF KIN</span>
-                        <div class="am-text-value" style="font-size:9px;">
-                            ${this._renderParagraphs(data.nextOfKin)}
-                        </div>
+                    <div class="am-box am-w-half">
+                        <span class="am-label">8. MEDICAL SCHOOL</span>
+                        <span class="am-value" style="font-size:9px;">${data.medSchool || ''}</span>
                     </div>
                     <div class="am-box am-w-quart">
-                        <span class="am-label">8a. SECURITY CLEARANCE</span>
-                        <span class="am-value">${data.security || ''}</span>
+                        <span class="am-label">8a. MED. LICENSE</span>
+                        <span class="am-value" style="font-size:8px;">${data.medLicense || ''}</span>
                     </div>
                     <div class="am-box am-w-quart">
-                        <span class="am-label">8b. THEATER</span>
-                        <span class="am-value" style="font-size:9px;">${data.theater || ''}</span>
+                        <span class="am-label">8b. BOARD CERT.</span>
+                        <span class="am-value" style="font-size:8px;">${data.boardCertification || ''}</span>
                     </div>
                 </div>
 
                 <div class="am-grid-row" style="border-top:1px solid #000;">
+                    <div class="am-box am-w-quart">
+                        <span class="am-label">8c. SECURITY CLEARANCE</span>
+                        <span class="am-value">${data.security || ''}</span>
+                    </div>
                     <div class="am-box am-w-auto">
-                        <span class="am-label">9. RECORD OF ASSIGNMENTS</span>
+                        <span class="am-label">9. RECORD OF HOSPITAL ASSIGNMENTS</span>
+                    </div>
+                </div>
+
+                <div class="am-grid-row">
+                    <div class="am-box am-w-auto">
                         <table class="am-table" style="margin-top:2px;">
-                            <thead><tr><th>DATE OF EFFECT</th><th>ORGANIZATION AND STATION</th></tr></thead>
-                            <tbody>${this._renderTableRows(data.assignments)}</tbody>
+                            <thead><tr><th>DATE OF EFFECT</th><th>HOSPITAL / UNIT — ASSIGNMENT</th></tr></thead>
+                            <tbody>${this._renderTableRows(data.hospitalAssignments)}</tbody>
                         </table>
                     </div>
                 </div>
-                
+
                 <div class="am-grid-row">
                     <div class="am-box am-w-auto">
-                        <span class="am-label">10. CAMPAIGN PARTICIPATION CREDITS</span>
+                        <span class="am-label">10. SURGICAL LOG / STATISTICS</span>
                         <div class="am-text-value" style="font-size:10px;">
-                            ${this._renderParagraphs(data.campaigns)}
+                            ${this._renderParagraphs(data.surgicalLog)}
                         </div>
                     </div>
                 </div>
@@ -306,15 +268,15 @@ const AmericanTemplate = {
                 ${outcomeStamp}
 
                 <div class="am-header" style="margin-top:0;">
-                    <span class="am-form-title">DA FORM 20 — PAGE 2</span>
+                    <span class="am-form-title">DA FORM 66 — PAGE 2 — MEDICAL OFFICER</span>
                     <span>${data.lastName || ''}, ${data.firstName || ''} · ASN: ${data.serialNumber || ''}</span>
                 </div>
 
                 <div class="am-grid-row" style="border-top:1px solid #000;">
                     <div class="am-box am-w-auto">
-                        <span class="am-label">11. MILITARY QUALIFICATIONS / BADGES</span>
-                        <div class="am-text-value">
-                            ${this._renderParagraphs(data.qualifications)}
+                        <span class="am-label">11. RESEARCH PUBLICATIONS</span>
+                        <div class="am-text-value" style="font-size:10px;">
+                            ${this._renderParagraphs(data.researchPublications)}
                         </div>
                     </div>
                 </div>
@@ -330,7 +292,7 @@ const AmericanTemplate = {
                 </div>
                 
                 <div class="am-text-area" style="border-top:1px solid #000;">
-                    <span class="am-label">13. REMARKS / DISCIPLINARY ACTION</span>
+                    <span class="am-label">13. REMARKS / SPECIAL NOTES</span>
                     <div class="am-text-value">
                         ${this._renderParagraphs(data.remarks)}
                     </div>
@@ -354,15 +316,15 @@ const AmericanTemplate = {
                         <div class="fingerprint-box" style="margin:5px auto;">PRINT</div>
                     </div>
                     <div class="am-box am-w-auto" style="justify-content: flex-end; padding-bottom:10px;">
-                        <span class="am-label" style="text-align:center; border-top:1px solid #000; padding-top:2px;">SIGNATURE OF INDIVIDUAL</span>
+                        <span class="am-label" style="text-align:center; border-top:1px solid #000; padding-top:2px;">SIGNATURE OF MEDICAL OFFICER</span>
                     </div>
                     <div class="am-box am-w-auto" style="justify-content: flex-end; padding-bottom:10px;">
-                        ${data.commanderSignature ? `<img src="${data.commanderSignature}" class="sig-image-us" alt="Подпись">` : ''}
-                        <span class="am-label" style="text-align:center; border-top:1px solid #000; padding-top:2px;">SIGNATURE OF PERSONNEL OFFICER</span>
+                        ${data.commanderSignature ? `<img src="${data.commanderSignature}" class="sig-image-us" alt="Signature">` : ''}
+                        <span class="am-label" style="text-align:center; border-top:1px solid #000; padding-top:2px;">SIGNATURE OF THE SURGEON GENERAL</span>
                     </div>
                 </div>
                 
-                <div class="page-num" style="margin-top: 10px;">PAGE 2 OF 2 · FOR OFFICIAL USE ONLY</div>
+                <div class="page-num" style="margin-top: 10px;">PAGE 2 OF 2 · FOR OFFICIAL USE ONLY · OFFICE OF THE SURGEON GENERAL</div>
             </div>
         `;
 
@@ -371,7 +333,7 @@ const AmericanTemplate = {
             result += `
             <div class="a4-page american-page ${data.paperWear ? 'effect-wear' : ''}">
                 <div class="am-header" style="margin-top:10px;">
-                    <span class="am-form-title">APPENDIX SUPPLEMENT</span>
+                    <span class="am-form-title">APPENDIX SUPPLEMENT — MEDICAL OFFICER</span>
                 </div>
                 <div class="am-text-area" style="flex:1; border-top:1px solid #000; margin-top:20px;">
                     <span class="am-label">ADDITIONAL REMARKS</span>

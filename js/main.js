@@ -17,7 +17,16 @@ const App = {
             hq_american: HqAmericanTemplate,
             id_soviet: IdSovietTemplate,
             id_reich: IdReichTemplate,
-            id_american: IdAmericanTemplate
+            id_american: IdAmericanTemplate,
+            doc_soviet: DocSovietTemplate,
+            doc_reich: DocReichTemplate,
+            doc_american: DocAmericanTemplate,
+            pilot_soviet: PilotSovietTemplate,
+            pilot_reich: PilotReichTemplate,
+            pilot_american: PilotAmericanTemplate,
+            intel_soviet: IntelSovietTemplate,
+            intel_reich: IntelReichTemplate,
+            intel_american: IntelAmericanTemplate
         };
 
         this.renderStyleCards();
@@ -38,7 +47,17 @@ const App = {
             { id: 'hq_american', category: 'hq', name: 'War Dept. Memo', desc: 'Секретный меморандум War Department (США). Строгий формат.', icon: '📁', tag: 'US Pentagon' },
             { id: 'id_soviet', category: 'ids', name: 'Удостоверение', desc: 'Удостоверение РККА / НКВД. Красная книжка с гербом.', icon: '📕', tag: 'ID / РККА' },
             { id: 'id_reich', category: 'ids', name: 'Kennkarte', desc: 'Документ Рейха. Тканевая текстура, отпечатки.', icon: '🆔', tag: 'ID / Рейх' },
-            { id: 'id_american', category: 'ids', name: 'War Dept. ID', desc: 'Military Identification. Карточка с фото и печатью.', icon: '👤', tag: 'ID / US Army' }
+            { id: 'id_american', category: 'ids', name: 'War Dept. ID', desc: 'Military Identification. Карточка с фото и печатью.', icon: '👤', tag: 'ID / US Army' },
+            // Specialists — Profession-specific dossiers
+            { id: 'doc_soviet', category: 'specialist', name: 'Военный врач', desc: 'Личное дело военного врача РККА. Специальность, госпитальные назначения.', icon: '🩺', tag: 'Врач / РККА' },
+            { id: 'doc_reich', category: 'specialist', name: 'Sanitätsoffizier', desc: 'Personalakte Sanitätsoffizier. Личное дело военного врача Вермахта.', icon: '⚕️', tag: 'Арцт / Wehrmacht' },
+            { id: 'doc_american', category: 'specialist', name: 'Medical Officer', desc: 'Medical Officer Personnel Record. Личное дело медофицера US Army.', icon: '🏥', tag: 'Med. Officer / US' },
+            { id: 'pilot_soviet', category: 'specialist', name: 'Лётная книжка', desc: 'Личное дело лётчика ВВС РККА. Налёт, типы, победы.', icon: '✈️', tag: 'Лётчик / ВВС' },
+            { id: 'pilot_reich', category: 'specialist', name: 'Fliegerpersonalakte', desc: 'Personalakte Flugzeugführer. Личное дело пилота Люфтваффе.', icon: '🛩️', tag: 'Pilot / Luftwaffe' },
+            { id: 'pilot_american', category: 'specialist', name: 'Pilot Record', desc: 'USAAF Pilot Personnel Record. Личное дело пилота USAAF.', icon: '🦅', tag: 'Pilot / USAAF' },
+            { id: 'intel_soviet', category: 'specialist', name: 'Дело оперативника', desc: 'Личное дело оперативника НКВД/СМЕРШ. Агентура, операции.', icon: '🕵️', tag: 'Разведка / СМЕРШ' },
+            { id: 'intel_reich', category: 'specialist', name: 'Agentenakte', desc: 'Personalakte Abwehr/SD. Досье агента разведки Рейха.', icon: '🔍', tag: 'Agent / Abwehr' },
+            { id: 'intel_american', category: 'specialist', name: 'OSS Agent File', desc: 'OSS Personnel File. Досье агента стратегических служб США.', icon: '🗝️', tag: 'Agent / OSS' }
         ];
         
         const cards = allCards.filter(c => c.category === this.currentCategory);
